@@ -1,0 +1,73 @@
+\documentclass[12pt, letterpaper]{article}
+
+\title{Final Project Proposal}
+\author{Nathan Roach, Patricia Walchessen, Charlie Wang, and Yue Zhang}
+\date{October 26, 2017}
+
+\usepackage[utf8]{inputenc}
+\usepackage{blindtext}
+\usepackage{comment}
+\usepackage{csquotes}
+\usepackage{cite}
+\usepackage[numbers]{natbib}
+
+\setlength{\parindent}{4em}
+\setlength{\parskip}{1em}
+
+\begin{document}
+
+\maketitle
+
+\section*{Research Topic}
+
+SimHash is a widely used Locality Sensing Hashing (LSH) algorithm used to determine cosine similarity in large data sets\cite{simhash}. In 2016, Ondov et al. used MinHash, another LSH algorithm, to analyze the resemblance between genomes and metagenomes\cite{MinHash}. This suggests that SimHash could also be used to analyze the resemblance between genomes and metagenomes. We would like to implement the SimHash algorithm to determine genetic similarity. 
+
+Implementation of SimHash would be a slightly different approach as MinHash analyzes resemblance whereas SimHash analyzes cosine similarity, but could prove scientifically useful as cosine similarity is more readily understood in scientific circles. In a paper comparing the results of MinHash vs. SimHash, MinHash outperformed SimHash when data was binary in areas of low and high similarity\cite{SimvsMin}. Ideally, we will run a comparison of MinHash and SimHash on the same genetic data-sets and determine the optimal algorithm to run for genome similarity.
+
+To evaluate our results, we will use the same criteria as Ondov et al. to facilitate comparison.
+
+\section*{Input Data}
+
+\begin{enumerate}
+\item S. cerevisiae
+\item S. pombe
+\item E. coli
+\end{enumerate}
+
+\section*{Milestones}
+
+\begin{enumerate}
+\item Replicating MinHash Data
+\item Implementing SimHash algorithm
+\item Benchmarking MinHash vs SimHash
+\end{enumerate}
+
+\section*{Stretch Goals}
+
+\begin{enumerate}
+\item Expand to full genome or multiple full genomes with varying GC content, redundancy etc.
+\item Determine optimal k
+\end{enumerate}
+
+\begin{thebibliography}{9}
+
+
+\bibitem{simhash} 
+  Caitlin Sadowski and Greg Levin.
+  \textit{SimHash: Hash-based Similarity Detection}.
+  http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.473.7179\&rep\\=rep1\&type=pdf, 
+  2007.
+
+\bibitem{SimvsMin} 
+  Anshumali Shrivastava and Ping Li.
+  \textit{In Defense of MinHash Over SimHash}.
+  Journal of Machine Learning, 33, 2014.
+
+\bibitem{MinHash} 
+  Brian D. Ondov, Todd J. Treangen, Páll Melsted, Adam B. Mallonee, Nicholas H. Bergman, Sergey Koren and Adam M. Phillippy.
+  \textit{Mash: fast genome and metagenome distance estimation using MinHash}.
+  Genome Biology, 17:132, 2016.
+
+\end{thebibliography}
+
+\end{document}

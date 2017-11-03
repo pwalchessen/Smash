@@ -4,6 +4,8 @@
 Created on Thu Nov  2 23:02:44 2017
 
 """
+#in case you don't have simhash package in you computer, please install simhash
+#first: type in "pip install simhash" in terminal
 import re
 from simhash import Simhash
 

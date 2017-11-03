@@ -1,0 +1,28 @@
+#!/usr/bin/env python2
+# -*- coding: utf-8 -*-
+"""
+Created on Thu Nov  2 23:02:44 2017
+
+"""
+'''
+#reading two genome file
+geno_file_1, geno_file_2 = open(sys.argv[1]), open(sys.argv[2])
+file_1 = geno_file_1.readlines()
+file_2 = geno_file_2.readlines()
+'''
+
+#reading two genome file from hardcoding handle
+geno_file_1, geno_file_2 = open('e_coli.fna'), open('s_pom.fna')
+file_1, file_2 = geno_file_1.readlines(), geno_file_2.readlines()
+
+#take the name line off and keep the sequences which is currently separated by'\n'
+#and then all sequences together as the input genome
+del file_1[0], file_2[0]
+geno_1, geno_2 = '', ''
+geno_pieces_1, geno_pieces_2 = [], []
+
+for i in file_1:
+    geno_1 = geno_1 + i.strip()
+for i in file_2:
+    geno_2 = geno_2 + i.strip()
+

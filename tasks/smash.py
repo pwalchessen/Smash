@@ -6,20 +6,20 @@ Created on Thu Nov  2 23:02:44 2017
 """
 #in case you don't have simhash package in you computer, please install simhash
 #first: type in "pip install simhash" in terminal
-import re
+import re, sys
 from simhash import Simhash, SimhashIndex
 
 
 '''
 #reading two genome files
-geno_file_1, geno_file_2 = open(sys.argv[1]), open(sys.argv[2], open(sys.argv[3]))
+geno_file_1, geno_file_2 = open(sys.argv[1]), open(sys.argv[2]), open(sys.argv[3])
 file_1 = geno_file_1.readlines()
 file_2 = geno_file_2.readlines()
 file_3 = geno_file_3.readlines()
-'''
 
+'''
 #reading three genome files from hardcoding handle
-geno_file_1, geno_file_2, geno_file_3 = open('e_coli.fna'), open('s_pom.fna'), open('s.cer.fna')
+geno_file_1, geno_file_2, geno_file_3 = open('e_coli.fna'), open('s_pom.fna'), open('s_cer.fna')
 file_1, file_2, file_3 = geno_file_1.readlines(), geno_file_2.readlines(), geno_file_3.readlines()
 
 #take the name line off and keep the sequences which is currently separated by'\n'

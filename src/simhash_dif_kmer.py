@@ -9,7 +9,6 @@ Created on Thu Nov 16 16:15:27 2017
 import re, sys
 from simhash import Simhash
 
-'''
 #reading three genome files from hardcoding handle
 geno_file_1, geno_file_2, geno_file_3 = open('e_coli.fna'), open('s_pom.fna'), open('s_cer.fna')
 file_1, file_2, file_3 = geno_file_1.readlines(), geno_file_2.readlines(), geno_file_3.readlines()
@@ -18,7 +17,7 @@ file_1, file_2, file_3 = geno_file_1.readlines(), geno_file_2.readlines(), geno_
 #reading the test files (short genome sequences). test_3.txt is nearly identical to test_2.txt
 geno_file_1, geno_file_2, geno_file_3 = open('test_1.txt'), open('test_2.txt'), open('test_3.txt')
 file_1, file_2, file_3 = geno_file_1.readlines(), geno_file_2.readlines(), geno_file_3.readlines()
-
+'''
 
 #take the name line off and keep the sequences which is currently separated by'\n'
 #and then put all sequences together as the input genome

@@ -1,5 +1,5 @@
 #!/bin/sh
-#SBATCH --job-name= simhash_k_size
+#SBATCH --job-name=simhash_k_size
 #SBATCH --time=100:00:00
 #SBATCH --cpus-per-task=5
 #SBATCH --mail-type=end

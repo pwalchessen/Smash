@@ -1,0 +1,8 @@
+/cm/local/apps/slurm/var/spool/job15246764/slurm_script: line 7: ml: command not found
+Traceback (most recent call last):
+  File "simhash_dif_kmer.py", line 10, in <module>
+    from simhash import Simhash
+  File "/home-4/yzhan231@jhu.edu/comp_geno/smash/src/simhash.py", line 76
+    features = {k:sum(1 for _ in g) for k, g in groupby(sorted(features))}
+                                      ^
+SyntaxError: invalid syntax

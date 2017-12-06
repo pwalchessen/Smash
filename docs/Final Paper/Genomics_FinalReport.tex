@@ -10,6 +10,7 @@
 \usepackage{csquotes}
 \usepackage{cite}
 \usepackage[numbers]{natbib}
+\usepackage{color}
 
 \setlength{\parindent}{4em}
 \setlength{\parskip}{1em}
@@ -19,47 +20,64 @@
 \maketitle
 
 \begin{abstract}
-	[1 paragraph] Final Project Abstract
+	[1 paragraph] \color{red} TO DO \color{black} Final Project Abstract
 \end{abstract}
 
 
-\section*{Introduction}
+\section{Introduction}
 An intriguing and common problem that arises in computation is efficiently comparing the similiarities between high-dimensional data. The problem reaches to the far corners of computation, including with machine learning and kernels. In bioinformatics, the problem takes the form of long genomic sequences and the aim of determining the similarity between both close and disparate sequences. There are many purposes for solving the problem in bioinformatics, including evaluating evolutionary relationships, determining the organismal source of sequencing data, and comparing metagenomic data. \\ \\
 One class of algorithms that has been developed is Locality-Sensitive Hashing (LSH) algorithms. LSH aims to solve the problem by reducing data dimensionality and binning inputs in such a manner that similar data sets can be grouped together with high probability. There are two prevalent LSH algorithms in the wild: MinHash and SimHash. \\ \\
 MinHash computes the differences between two genomic sequences through the estimation of a Jaccard Index in which a ratio is computed that evaluates the percent shared identity between the sets. SimHash, on the other hand, estimates the cosine similarity through the use of weighting of the frequency of bits and then compiling the signs from the summations.
 
-\section*{Prior Work}
-[1 page] Some prior work include a paper published in 2016 about using MinHash to evaluate genomic sequences. In 2016, Ondov et al. used MinHash to analyze the resemblance between genomes and metagenomes[3]. After additional research, we saw no reference of using any other LSH to hash and compare genomic sequences, so we pursued a research project on the competitor, SimHash. The literature suggests that SimHash can be used for the same purpose as MinHash in analyzing resemblance. 
+\section{Prior Work}
+[1 page] \color{red} TO DO \color{black} Some prior work include a paper published in 2016 about using MinHash to evaluate genomic sequences. In 2016, Ondov et al. used MinHash to analyze the resemblance between genomes and metagenomes[3]. After additional research, we saw no reference of using any other LSH to hash and compare genomic sequences, so we pursued a research project on the competitor, SimHash. The literature suggests that SimHash can be used for the same purpose as MinHash in analyzing resemblance. 
 
-\section*{Methods and Software}
-\subsection{Exploration with SimHash}
-We started exploring the existing SimHash literature and implementations out in the wild to see how the original SimHash algorithm performs. Of the many that we looked into, the two that we spent the most time with and explored the most extensively were: one that is written in Python (https://github.com/leonsim/simhash) and another that is written in Go (https://github.com/mfonda/simhash). \\ \\
-What is interesting of note about these packages is that they are primarily built on shingling, or dividing up into k-mers. method, combined with 
-For both of these SimHash libraries, we took a deep dive into each of the respective codebases and modified the code to accept genomic data as input and to spit out comprehensible output for genomic data. We also modified other parts of the code to make it more flexible. For example, in the Python library, there were some hard-coded values such as the size of the shingle or k-mer. Next, we fed in different genomic sequences, and using each of the libraries' interfaces, observed the outputs from the SimHash library. \\ \\
-To our surprise, when putting in the entire genome, SimHash was returning quite inaccurate outputs. We first noted that it may be because of the hashing function used, so we dove into what the libraries used. The Python library was using a MD5 hashing function, while the Go library was doing manual bit shifting operations. Since the hashing functions were different yet both were not returning great results, we concluded that it might not be due to the hashing function. \\ \\
-We scoured the Internet and found that it might be due to how SimHash is primarily an algorithm built to detect duplicity and cannot handle too big of a hamming distance, say a hamming distance of over 20. Thus, we needed to do more than just feed the whole genome into the SimHash libraries. \\ \\
-We took a closer look at the genome file, and the first pattern we discovered was the substrings of uppercase letters and lowercase letters. We discovered that uppercase letters corresponded to non-repeats while lowercase letters correspond to repeats. The first approach of ours was to make all the bases in the sequence uppercase letters. Then, we ran the SimHash libraries again. Once again, the results were inaccurate. \\ \\
-Finally, we decided to take one last stab at it by intelligently dividing up the genome. We grouped all the sequences that were uppercase together, and all the sequences that were lowercase together. This is based on the assumption that the repeats, when they exist, are long. Then, we constructed the shingles or k-mers, and ran them through the SimHash libraries. Lo and behold, the results were still inaccurate.   
-
-\subsection{Our Flavor of SimHash}
-[1.5 pages] Seeing how existing SimHash libraries were not performing as expected, we went back to the theory behind the SimHash algorithm. We 
-
-\subsubsection{Data}
-\subsubsection{Algorithm}
+\section{Research Methods and Software}
 
 
 \subsection{Exploration with MinHash}
-[0.5 of a page]. Patricia's description of what she has done with MinHash.
+[1.5 pages]. \color{red} TO DO \color{black} Patricia's description of what she has done with MinHash. Include the picture.
+
+
+\subsection{Exploration with SimHash}
+\subsubsection{Dataset}
+The data that we tested on included 300+ E. coli genomes as well as multiple different yeast genomes. For the purpose of the discussion in this section, we will talk about the methods developed based on empirical testing on a dataset consisting of 1 E. coli genome and 2 yeast genomes. Additional discussion of the complete dataset will be presented in the Results section.
+
+\subsubsection{Method}
+To fully explore the application of SimHash in the genomics field, we commenced with surveying the existing SimHash literature and implementations. Next, we looked for existing SimHash libraries, many of which were designed for analyzing websites are texts of English words, and compiled the most reputable ones. From there, we selected two based on their reputation and fork numbers for us to base our code on and to adapt into the genomic field to explore SimHash more extensively. The first is Python-based (https://github.com/leonsim/simhash) and the second is Go-based (https://github.com/mfonda/simhash). \color{red} Cite properly \color{black}
+
+\subsubsection{Python-based SimHash}
+Upon surveying the existing code in the Python-based SimHash, we found that there were some hard-coded values in the library, such as k-mer or shingles sizes of 4. We thus took account of hard-coded values, and then created our own SimHash class based on the Python-based SimHash. The goal with our SimHash class is to enable it to fundamentally accept genomic data and build the shingles based on genomic data, not say English words. One thing to note when we explored the Python-based SimHash was that it relied on using MD5 to hash the keys, and then performed the operations of SimHash and the hamming distance on the MD5 hashes. In all, we coded a more flexible Python-based SimHash library for running our tests of SimHash on genomic data.
+
+\subsubsection{Go-based SimHash}
+Our design and coding of the Go-based SimHash was similar to the Python-based SimHash. By basing our code on the Go library, we made a fundamental modification to accept genomic data. A special particularity with the unmodified Go-based SimHash library is that though the library has the method for making shingles of words, it does not appear to be used. Also, the unmodified Go-based SimHash library very much assumes that the input is string of English words that could or could not be encoded in Unicode. Thus, we made fundamental modifications to the feature construction in the Go-based SimHash library to accept genomic data. Some of the modifications included building the features based on whether it is a substring of lowercase bases or uppercase bases, or building the features based on a k-mer size of say 15.
+
+
+\subsubsection{Evolution of our Research}
+With both our Python-based SimHash and Go-based SimHash code, we fed in the genomic data to test how the core SimHash algorithm performs. Recall that the genomic data consisted of one strain of E. coli, which is about 4.5 million bases, while both of the yeast strands are about 12 million bases each. After running the SimHash algorithm in each respective language and observing the output of the distance between the genomic data, we found that the results were lackluster. \\ \\
+While say between one of the yeast strands and the E. coli, the SimHash algorithm was able to distinguish that they were quite different, the SimHash algorithm outputted that the difference between the other yeast strand and E. coli vs. the difference between both of the yeast strands was about equivalent. Fundamentally, just from the fact that E. coli is a much shorter genome, the result showed that SimHash was losing some sort of resolution. \\ \\
+We first thought that it might be due to how the Python-based SimHash was using the MD5 hash and was implementing SimHash that influenced the results. However, by bringing in the Go-based SimHash which does not use a MD5 hash but the raw bit values and computes the SimHash fingerprint based on a bit by bit operation with weighting, which is a bit different than the Python-based SimHash, the fact that both were returning similarly lackluster results showed that the implementation of SimHash is not likely the factor.  \\ \\
+We next explored whether it is because of how we are inputting the genomic data. We explored different k-mer sizes and also decided to normalize the data by converting say all the bases to lowercase letters. However, even attempts at standardizing the genomic data or exploration of different shingling sizes did not alter the lackluster results outputted from SimHash. Thus, we concluded that it is likely due to how the SimHash algorithm is designed. \\ \\
+We explored the literature online, and discovered that SimHash was primarily designed for finding small changes on websites. Thus, the design principle of SimHash was to have a high resolution of changes when there are very few changes overall between two datasets. Some even suggested that SimHash cannot handle too big of changes or hamming distances, with say a hamming distance of over 20 causing SimHash to lose its resolution. Thus, we needed to find a way to make up for the loss of resolution.
+
+
+\subsection{SMASH}
+[1.5 pages] Thus came the development of original research based on what we learned and observed from MinHash and SimHash. Seeing how the existing SimHash algorithm was losing resolution when the Hamming distance was too great, we went back to the drawing board and examined each part of the SimHash algorithm closely. From the examination and with additional brainstorming, we came up with SMASH, which is designed to primarily address the shortcoming of resolution loss with SimHash.
+
+\subsubsection{Algorithm}
+\color{red} TO DO \color{black}
 
 
 
 
+\section{Contributions of Each Member}
+[1 paragraph] \color{red} TO DO \color{black}
 
-\section*{Results}
-[1.5 pages] Insert results of different k-mer sizes and of different genomic sequences.
+\section{Results}
+[1.5 pages] \color{red} TO DO \color{black} Insert results of different k-mer sizes and of different genomic sequences.
 
-\section*{Conclusions}
-[0.5 pages] There are more ways to judge similarity between two genomic sequences than just hashing the entirety of each of the genome and comparing how close in relation both are.
+\section{Conclusions}
+[0.5 pages] \color{red} TO DO \color{black} There are more ways to judge similarity between two genomic sequences than just hashing the entirety of each of the genome and comparing how close in relation both are.
 
 
 

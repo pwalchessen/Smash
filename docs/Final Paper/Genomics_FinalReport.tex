@@ -6,11 +6,14 @@
 
 \usepackage[utf8]{inputenc}
 \usepackage{blindtext}
+\usepackage{cite}
+\usepackage{color}
 \usepackage{comment}
 \usepackage{csquotes}
-\usepackage{cite}
+\usepackage{graphix}
 \usepackage[numbers]{natbib}
-\usepackage{color}
+\usepackage{wrapfig}
+
 
 \setlength{\parindent}{4em}
 \setlength{\parskip}{1em}
@@ -30,7 +33,17 @@ One class of algorithms that could solve this problem is Locality-Sensitive Hash
 MinHash computes the differences between two genomic sequences through the estimation of a Jaccard Index, a ratio of the  shared identity between the sets. SimHash, on the other hand, estimates the cosine similarity by weighting of the frequency of bits, compiling them into vectors and evaluating similarity by the distance between the vectors.
 
 \section{Prior Work}
-[1 page] \color{red} TO DO \color{black} In 2016, Ondov et al. used MinHash to analyze the resemblance between genomes and metagenomes\cite{MinHash}. They altered the MinHash algorithm to include pairwise mutation distance, allowing efficient clustering and search of massive sequence collections. Mash, they call their implementation, has two main components: \testit{sketch} and \testit{dist}. The \testit{sketch} funciton creates MinHash sketches from a sequence or a collection of sequences. In more common\\ \\
+[1 page] \color{red} TO DO \color{black} In 2016, Ondov et al. used MinHash to analyze the resemblance between genomes and metagenomes\cite{MinHash}. They altered the MinHash algorithm to include pairwise mutation distance, or Mash distance, which estimates the rate of sequence mutation under a simple evolutionary model. Their modifications allowed Mash to efficiently cluster and search of massive sequence collections. Mash, as they call their implementation, has two main components: \testit{sketch} and \testit{dist}. The \testit{sketch} funciton creates MinHash sketches from a sequence or a collection of sequences. \testit{Dist} compares two sketches and returns an estimate of the Jaccard index (ratio of the shared identity between sets), a P value, and the Mash distance.\cite{MinHashDescription} Mash can be used to cluster whole genomes, identify the genome in real-time  from assemblies or reads, and cluster massive metagenomic databases.\\ \\
+
+% Mash description Figure
+\begin{wrapfigure}{r}{0.25\textwidth}
+    \centering
+    \includegraphics[width=0.25\textwidth]{Mash_description}
+    \caption{Description of MinHash: First, the sequences divided into their constituent k-mers. Each k-mer is then passed through a hash function to obtain a 32- or 64-bit hash. The Jaccard index is ratio of shared hashes between A and B over all distinct hashes in A and B. The Jaccard Index can be approximated by considering a smaller subset of A and B. MinHash sketches S(A) and S(B) of size s = 5 are shown for A and B, comprising the five smallest hash values. The Jaccard Index is determined by dividing the similarity between S(A) and S(B) by the distinct values in S(A) and S(B)}
+\label{fig:MinHashDescription}
+\end{wrapfigure}
+
+
 
 After additional research, we saw no reference of using any other LSH to hash and compare genomic sequences, so we pursued a research project on a competing LSH algorithm: SimHash. Previous studies suggest SimHash can be used for the same purpose as MinHash in analyzing resemblance. 
 

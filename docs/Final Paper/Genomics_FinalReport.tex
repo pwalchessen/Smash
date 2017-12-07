@@ -10,7 +10,7 @@
 \usepackage{color}
 \usepackage{comment}
 \usepackage{csquotes}
-\usepackage{graphix}
+\usepackage{graphicx}
 \usepackage[numbers]{natbib}
 \usepackage{wrapfig}
 
@@ -33,12 +33,15 @@ One class of algorithms that could solve this problem is Locality-Sensitive Hash
 MinHash computes the differences between two genomic sequences through the estimation of a Jaccard Index, a ratio of the  shared identity between the sets. SimHash, on the other hand, estimates the cosine similarity by weighting of the frequency of bits, compiling them into vectors and evaluating similarity by the distance between the vectors.
 
 \section{Prior Work}
+\begin{verbatim*}
 [1 page] \color{red} TO DO \color{black} In 2016, Ondov et al. used MinHash to analyze the resemblance between genomes and metagenomes\cite{MinHash}. They altered the MinHash algorithm to include pairwise mutation distance, or Mash distance, which estimates the rate of sequence mutation under a simple evolutionary model. Their modifications allowed Mash to efficiently cluster and search of massive sequence collections. Mash, as they call their implementation, has two main components: \testit{sketch} and \testit{dist}. The \testit{sketch} funciton creates MinHash sketches from a sequence or a collection of sequences. \testit{Dist} compares two sketches and returns an estimate of the Jaccard index (ratio of the shared identity between sets), a P value, and the Mash distance.\ref{fig:MinHashDescription} Two important parameters within Mash are sketch size and k-mer size. A larger sketch size improves accuracy of the Mash estimates, particularly for divergent genomes, but increases the space and time required for computing distances. The determination of k-mer size alters sensitivity and specificity. Smaller values of k-mer size are more sensitive for divergent genomes, but lose specificity for large genomes due to k-mer collisions. Larger values of k-mer size lose sensitivity. Thus, chosing the smallest k-mer size that reduces chance collisions is important and the k-mer size will change depending on the divergence of the genomes. To maximize sensitivity and specificity, Mash uses a default k-mer size of 21 and a sketch size of 1,000. According to preliminary research by Ondov et al., Mash can be used to cluster whole genomes, identify the genome in real-time  from assemblies or reads, and cluster massive metagenomic databases.\\ \\
+\end{verbatim*}
+
 
 % Mash description Figure
-\begin{wrapfigure}{r}{0.25\textwidth}
+\begin{wrapfigure}{c}{0.25\textwidth}
     \centering
-    \includegraphics[width=0.25\textwidth]{Mash_description}
+    \includegraphics[width=0.25\textwidth]{Mash_description.png}
     \caption{Description of MinHash: First, the sequences divided into their constituent k-mers. Each k-mer is then passed through a hash function to obtain a 32- or 64-bit hash. The Jaccard index is ratio of shared hashes between A and B over all distinct hashes in A and B. The Jaccard Index can be approximated by considering a smaller subset of A and B. MinHash sketches S(A) and S(B) of size 5 are shown for A and B, comprising the five smallest hash values. The Jaccard Index is determined by dividing the similarity between S(A) and S(B) by the distinct values in S(A) and S(B)}
 \label{fig:MinHashDescription}
 \end{wrapfigure}
@@ -51,9 +54,7 @@ After additional research, we saw no reference of using any other LSH to hash an
 
 
 \subsection{Exploration with MinHash}
-[1 page]. \color{red} TO DO \color{black} Patricia's description of what she has done with MinHash. Include the picture.
-We used a Python implementation of Mash called SourMash.\cite{GitHub-Sourmash} It was developed by Titus Brown and Luiz Irber from UC Davis and is available as open-source software from GitHub.
-300+ E. coli genomes were compared between each other and a minimum distance of 0.378 was determined.\ref{fig:All Ecoli} The E. coli genomes were downloaded from the RefSeq database and a full list is available in the appendix.
+We explored the algorithm and libraries of MinHash to better understand the properties behind MinHash, better understand how MinHash performs and works, and to confirm that we are able to achieve the results of the MASH paper. To accomplish this, we used a Python implementation of Mash called SourMash\cite{GitHub-Sourmash}, which was developed by Titus Brown and Luiz Irber from UC Davis and is available open-source. The data that we ran the MinHash library on was 300+ E. coli genomes, which were compared between each other. We achieved and determined a minimum distance of 0.378. \color{red} TO DO \color{black} \ref{fig:All Ecoli} The E. coli genomes were downloaded from the RefSeq database and a full list is available in the appendix.
 
 
 \subsection{Exploration with SimHash}
@@ -162,8 +163,9 @@ similarity_distance = 1 - cosine(vector1, vector2)
 % Appendix
 % ---------------------------------------------------------------------------------------------------------------------------
 \appendix
-\chapter{MinHash Genomes}
+
 \section{E. Coli Genomes}
+\begin{verbatim*}
 GCF_000005845.2_ASM584v2_genomic.fna.gz
 GCF_000007445.1_ASM744v1_genomic.fna.gz
 GCF_000008865.1_ASM886v1_genomic.fna.gz
@@ -561,6 +563,7 @@ GCF_900096845.1_Ecoli_AG100_Sample3_M9_Assembly_genomic.fna.gz
 GCF_900149875.1_EPEC1_genomic.fna.gz
 GCF_900174625.1_WI1-reUpload_genomic.fna.gz
 GCF_900186905.1_49923_G01_genomic.fna.gz
+\end{verbatim*}
 
-\section{}
+
 \end{document}

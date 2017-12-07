@@ -1,0 +1,10 @@
+k_mer size = 20
+32 32
+k_mer size = 22
+35 31
+k_mer size = 24
+31 25
+k_mer size = 26
+26 34
+k_mer size = 28
+30 27

@@ -1,0 +1,8 @@
+k_mer size = 2
+1 6
+k_mer size = 4
+0 16
+k_mer size = 6
+3 17
+k_mer size = 8
+3 7

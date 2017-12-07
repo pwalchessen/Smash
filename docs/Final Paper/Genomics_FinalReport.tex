@@ -33,17 +33,17 @@ One class of algorithms that could solve this problem is Locality-Sensitive Hash
 MinHash computes the differences between two genomic sequences through the estimation of a Jaccard Index, a ratio of the  shared identity between the sets. SimHash, on the other hand, estimates the cosine similarity by weighting of the frequency of bits, compiling them into vectors and evaluating similarity by the distance between the vectors.
 
 \section{Prior Work}
-[1 page] \color{red} TO DO \color{black} In 2016, Ondov et al. used MinHash to analyze the resemblance between genomes and metagenomes\cite{MinHash}. They altered the MinHash algorithm to include pairwise mutation distance, or Mash distance, which estimates the rate of sequence mutation under a simple evolutionary model. Their modifications allowed Mash to efficiently cluster and search of massive sequence collections. Mash, as they call their implementation, has two main components: \testit{sketch} and \testit{dist}. The \testit{sketch} funciton creates MinHash sketches from a sequence or a collection of sequences. \testit{Dist} compares two sketches and returns an estimate of the Jaccard index (ratio of the shared identity between sets), a P value, and the Mash distance.\cite{MinHashDescription} Mash can be used to cluster whole genomes, identify the genome in real-time  from assemblies or reads, and cluster massive metagenomic databases.\\ \\
+[1 page] \color{red} TO DO \color{black} In 2016, Ondov et al. used MinHash to analyze the resemblance between genomes and metagenomes\cite{MinHash}. They altered the MinHash algorithm to include pairwise mutation distance, or Mash distance, which estimates the rate of sequence mutation under a simple evolutionary model. Their modifications allowed Mash to efficiently cluster and search of massive sequence collections. Mash, as they call their implementation, has two main components: \testit{sketch} and \testit{dist}. The \testit{sketch} funciton creates MinHash sketches from a sequence or a collection of sequences. \testit{Dist} compares two sketches and returns an estimate of the Jaccard index (ratio of the shared identity between sets), a P value, and the Mash distance.\cite{MinHashDescription} Two important parameters within Mash are sketch size and k-mer size. A larger sketch size improves accuracy of the Mash estimates, particularly for divergent genomes, but increases the space and time required for computing distances. The determination of k-mer size alters sensitivity and specificity. Smaller values of k-mer size are more sensitive for divergent genomes, but lose specificity for large genomes due to k-mer collisions. Larger values of k-mer size lose sensitivity. Thus, chosing the smallest k-mer size that reduces chance collisions is important and the k-mer size will change depending on the divergence of the genomes. To maximize sensitivity and specificity, Mash uses a default k-mer size of 21 and a sketch size of 1,000. According to preliminary research by Ondov et al., Mash can be used to cluster whole genomes, identify the genome in real-time  from assemblies or reads, and cluster massive metagenomic databases.\\ \\
 
 % Mash description Figure
 \begin{wrapfigure}{r}{0.25\textwidth}
     \centering
     \includegraphics[width=0.25\textwidth]{Mash_description}
-    \caption{Description of MinHash: First, the sequences divided into their constituent k-mers. Each k-mer is then passed through a hash function to obtain a 32- or 64-bit hash. The Jaccard index is ratio of shared hashes between A and B over all distinct hashes in A and B. The Jaccard Index can be approximated by considering a smaller subset of A and B. MinHash sketches S(A) and S(B) of size s = 5 are shown for A and B, comprising the five smallest hash values. The Jaccard Index is determined by dividing the similarity between S(A) and S(B) by the distinct values in S(A) and S(B)}
+    \caption{Description of MinHash: First, the sequences divided into their constituent k-mers. Each k-mer is then passed through a hash function to obtain a 32- or 64-bit hash. The Jaccard index is ratio of shared hashes between A and B over all distinct hashes in A and B. The Jaccard Index can be approximated by considering a smaller subset of A and B. MinHash sketches S(A) and S(B) of size 5 are shown for A and B, comprising the five smallest hash values. The Jaccard Index is determined by dividing the similarity between S(A) and S(B) by the distinct values in S(A) and S(B)}
 \label{fig:MinHashDescription}
 \end{wrapfigure}
 
-
+Mash has been used to cluster all of the NCBI RefSeq Release 70, totaling 54,118 organisms and 618 Gbp of genomic sequence. The resulting sketches yielded a compression factor of more than 7000-fold versus the uncompressed FASTA (93 MB vs. 674 GB) and only took 33 CPU hours. Additionally, adding a genome to the database took approximately 0.9 CPU seconds per 5 MB genome. However, fast and space-efficient only works if the results are valid. A comparison of Mash distance and ANI, a  measure of genetic similarity, among a subset of 500 E. coli genomes, found Mash distances correlate well with ANI. For a sketch size of 1,000 and k-mer size of 21, Mash approximates 1 - ANI with a root-mean-square error of 0.00274. Thus, Mash enables scalable, whole-genome clustering. 
 
 After additional research, we saw no reference of using any other LSH to hash and compare genomic sequences, so we pursued a research project on a competing LSH algorithm: SimHash. Previous studies suggest SimHash can be used for the same purpose as MinHash in analyzing resemblance. 
 
@@ -52,6 +52,8 @@ After additional research, we saw no reference of using any other LSH to hash an
 
 \subsection{Exploration with MinHash}
 [1 page]. \color{red} TO DO \color{black} Patricia's description of what she has done with MinHash. Include the picture.
+We used a Python implementation of Mash called SourMash.\cite{GitHub-Sourmash} It was 
+The data that we tested on included 300+ E. coli genomes as well as multiple different yeast genomes.
 
 
 \subsection{Exploration with SimHash}
@@ -130,7 +132,11 @@ similarity_distance = 1 - cosine(vector1, vector2)
 
 \begin{thebibliography}{9}
 
-
+\bibitem{GitHub-SourMash} 
+  C. Titus Brown and Luiz C. Irber, Jr.
+  \textit{SourMash}.
+  GitHub repository, https://github.com/dib-lab/sourmash, 2016.
+  
 \bibitem{simhash} 
   Caitlin Sadowski and Greg Levin.
   \textit{SimHash: Hash-based Similarity Detection}.

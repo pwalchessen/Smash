@@ -34,7 +34,7 @@
 \section{Introduction}
 An intriguing and common problem that arises in computation is efficiently comparing the similiarities between high-dimensional data. The problem reaches into the far corners of computation, including machine learning and kernels. In bioinformatics, the problem takes the form of determining the similarity between both close and disparate long genomic sequences. Solving the challenge of comparing long genomic sequences would aid in evaluating evolutionary relationships, determining the organismal source of sequencing data, and comparing metagenomic data. \\ \\
 One class of algorithms that could solve this problem is Locality-Sensitive Hashing (LSH) algorithms. LSH algorithms reduce data dimensionality and bin inputs such that similar data sets are grouped together with high probability. They solve the problem of approximate or exact Near Neighbor Search. In recent years LSH algorithms have offered solutions to problems such as: near-duplicate detection, genome-wide association, and both image and audio similarity identification. There are two prevalent LSH algorithms: MinHash and SimHash. \\ \\
-MinHash computes the differences between two genomic sequences through the estimation of a Jaccard Index, a ratio of the  shared identity between the sets. SimHash, on the other hand, estimates the cosine similarity by weighting of the frequency of bits, compiling them into vectors and evaluating similarity by the distance between the vectors. The application of MinHash across multiples fields of research have been explored, including in the computational genomics field. SimHash, on the other hand, has been more limited. This project is the foray of SimHash into helping compare long sequences in the computational genomics field.
+MinHash computes the differences between two genomic sequences through the estimation of a Jaccard Index, a ratio of the shared identity between the sets. SimHash, on the other hand, estimates the cosine similarity by weighting of the frequency of bits, compiling them into vectors and evaluating similarity by the distance between the vectors. The application of MinHash across multiples fields of research have been explored, including in the computational genomics field. SimHash, on the other hand, has been more limited. This project is the foray of SimHash into helping compare long sequences in the computational genomics field.
 
 \section{Prior Work}
 
@@ -131,7 +131,8 @@ similarity_distance = 1 - cosine(vector1, vector2)
 \section{Results}
 [1.5 pages] \color{red} TO DO \color{black} Insert results of different k-mer sizes and of different genomic sequences.
 
-% MinHash
+
+\subsection{MinHash}
 In our exploration of MinHash we compared whole genomes of varying similarity to both replicate the data in the paper by Ondov et al. and evaluate the MinHash algorithm as a whole. To replicate the results of Ondov et al., we ran MinHash on a set of primate genomes to create a pylogenic tree. This tree was then compared to the trees obtained by the UCSC genome browser and Ondov et al. to determine if MinHash was performing correctly.\ref{fig:Primate Tree} The resulting phylogenetic tree was slightly different from the reference trees. In our result, the Philippine tarsier was closer to the Northern greater galago and Gray mouse lemur. Additionally, we obtained the result that Chimpanzees are closer to Humans than to Bonobos, a result echoed by Ondov et al.'s implementation of MinHash.
 
 \begin{figure}[h]
@@ -146,12 +147,21 @@ To evaluate MinHash on datasets with a high degree of similarity, we ran Minhash
 
 \begin{figure}[h]
     \centering
-    \includegraphics[width=0.5\textwidth]{All_E_coli}
+    \includegraphics[width=1.0\textwidth]{All_E_coli}
     \caption{A Similarity Comparison of 397 \textit{E. coli} Species. This matrix shows similarity as darker in color. Note the darker colored diagonal line that stretches the matrix. This indicates the high similarity that occurs when a genome is compared to itself. The mminimum similarity within all genomes compared was a distance of 0.378 between Escherichia coli strain K-12 substrand MDS42 and Escherichia coli APEC O1.}
     \label{fig:All Ecoli}
 \end{figure}
 
+\subsection{SimHash}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=1.0\textwidth]{Simhash_kmer_result.png}
+	\caption{SimHash Test Results}
+	\label{fig:SimHashDescription}
+\end{figure}
 
+
+\subsection{SMASH}
 
 % ---------------------------------------------------------------------------------------------------------------------------
 % Conclusions

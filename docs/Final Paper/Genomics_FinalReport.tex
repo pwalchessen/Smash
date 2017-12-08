@@ -21,45 +21,51 @@
 \begin{document}
 
 \maketitle
-
+% ----------------------------------------------------------------------------------------------------------------------------
+% Abstract
+% ----------------------------------------------------------------------------------------------------------------------------
 \begin{abstract}
 	[1 paragraph] \color{red} TO DO \color{black} Final Project Abstract
 \end{abstract}
 
-
+% ----------------------------------------------------------------------------------------------------------------------------
+% Introduction
+% ----------------------------------------------------------------------------------------------------------------------------
 \section{Introduction}
 An intriguing and common problem that arises in computation is efficiently comparing the similiarities between high-dimensional data. The problem reaches into the far corners of computation, including machine learning and kernels. In bioinformatics, the problem takes the form of determining the similarity between both close and disparate long genomic sequences. Solving the challenge of comparing long genomic sequences would aid in evaluating evolutionary relationships, determining the organismal source of sequencing data, and comparing metagenomic data. \\ \\
 One class of algorithms that could solve this problem is Locality-Sensitive Hashing (LSH) algorithms. LSH algorithms reduce data dimensionality and bin inputs such that similar data sets are grouped together with high probability. They solve the problem of approximate or exact Near Neighbor Search. In recent years LSH algorithms have offered solutions to problems such as: near-duplicate detection, genome-wide association, and both image and audio similarity identification. There are two prevalent LSH algorithms: MinHash and SimHash. \\ \\
-MinHash computes the differences between two genomic sequences through the estimation of a Jaccard Index, a ratio of the  shared identity between the sets. SimHash, on the other hand, estimates the cosine similarity by weighting of the frequency of bits, compiling them into vectors and evaluating similarity by the distance between the vectors.
+MinHash computes the differences between two genomic sequences through the estimation of a Jaccard Index, a ratio of the shared identity between the sets. SimHash, on the other hand, estimates the cosine similarity by weighting of the frequency of bits, compiling them into vectors and evaluating similarity by the distance between the vectors. The application of MinHash across multiples fields of research have been explored, including in the computational genomics field. SimHash, on the other hand, has been more limited. This project is the foray of SimHash into helping compare long sequences in the computational genomics field.
 
 \section{Prior Work}
-\begin{verbatim*}
-[1 page] \color{red} TO DO \color{black} In 2016, Ondov et al. used MinHash to analyze the resemblance between genomes and metagenomes\cite{MinHash}. They altered the MinHash algorithm to include pairwise mutation distance, or Mash distance, which estimates the rate of sequence mutation under a simple evolutionary model. Their modifications allowed Mash to efficiently cluster and search of massive sequence collections. Mash, as they call their implementation, has two main components: \testit{sketch} and \testit{dist}. The \testit{sketch} funciton creates MinHash sketches from a sequence or a collection of sequences. \testit{Dist} compares two sketches and returns an estimate of the Jaccard index (ratio of the shared identity between sets), a P value, and the Mash distance.\ref{fig:MinHashDescription} Two important parameters within Mash are sketch size and k-mer size. A larger sketch size improves accuracy of the Mash estimates, particularly for divergent genomes, but increases the space and time required for computing distances. The determination of k-mer size alters sensitivity and specificity. Smaller values of k-mer size are more sensitive for divergent genomes, but lose specificity for large genomes due to k-mer collisions. Larger values of k-mer size lose sensitivity. Thus, chosing the smallest k-mer size that reduces chance collisions is important and the k-mer size will change depending on the divergence of the genomes. To maximize sensitivity and specificity, Mash uses a default k-mer size of 21 and a sketch size of 1,000. According to preliminary research by Ondov et al., Mash can be used to cluster whole genomes, identify the genome in real-time  from assemblies or reads, and cluster massive metagenomic databases.\\ \\
-\end{verbatim*}
 
-
+[1 page] \color{red} TO DO \color{black} In 2016, Ondov et al. used MinHash to analyze the resemblance between genomes and metagenomes\cite{MinHash}. They altered the MinHash algorithm to include pairwise mutation distance, or Mash distance, which estimates the rate of sequence mutation under a simple evolutionary model. Their modifications allowed Mash to efficiently cluster and search of massive sequence collections. Mash, as they call their implementation, has two main components: \textit{sketch} and \textit{dist}. The \textit{sketch} funciton creates MinHash sketches from a sequence or a collection of sequences. \textit{Dist} compares two sketches and returns an estimate of the Jaccard index (ratio of the shared identity between sets), a P value, and the Mash distance.\ref{fig:MinHashDescription} Two important parameters within Mash are sketch size and k-mer size. A larger sketch size improves accuracy of the Mash estimates, particularly for divergent genomes, but increases the space and time required for computing distances. The determination of k-mer size alters sensitivity and specificity. Smaller values of k-mer size are more sensitive for divergent genomes, but lose specificity for large genomes due to k-mer collisions. Larger values of k-mer size lose sensitivity. Thus, chosing the smallest k-mer size that reduces chance collisions is important and the k-mer size will change depending on the divergence of the genomes. To maximize sensitivity and specificity, Mash uses a default k-mer size of 21 and a sketch size of 1,000. According to preliminary research by Ondov et al., Mash can be used to cluster whole genomes, identify the genome in real-time  from assemblies or reads, and cluster massive metagenomic databases.
 % Mash description Figure
-\begin{wrapfigure}{c}{0.25\textwidth}
+\begin{figure}[h!]
     \centering
-    \includegraphics[width=0.25\textwidth]{Mash_description.png}
+    \includegraphics[width=0.5\textwidth]{Mash_description.png}
     \caption{Description of MinHash: First, the sequences divided into their constituent k-mers. Each k-mer is then passed through a hash function to obtain a 32- or 64-bit hash. The Jaccard index is ratio of shared hashes between A and B over all distinct hashes in A and B. The Jaccard Index can be approximated by considering a smaller subset of A and B. MinHash sketches S(A) and S(B) of size 5 are shown for A and B, comprising the five smallest hash values. The Jaccard Index is determined by dividing the similarity between S(A) and S(B) by the distinct values in S(A) and S(B)}
-\label{fig:MinHashDescription}
-\end{wrapfigure}
+	\label{fig:MinHashDescription}
+\end{figure}
+Mash has been used to cluster all of the NCBI RefSeq Release 70, totaling 54,118 organisms and 618 Gbp of genomic sequence. The resulting sketches yielded a compression factor of more than 7000-fold versus the uncompressed FASTA (93 MB vs. 674 GB) and only took 33 CPU hours. Additionally, adding a genome to the database took approximately 0.9 CPU seconds per 5 MB genome. However, fast and space-efficient only works if the results are valid. A comparison of Mash distance and ANI, a  measure of genetic similarity, among a subset of 500 E. coli genomes, found Mash distances correlate well with ANI. For a sketch size of 1,000 and k-mer size of 21, Mash approximates 1 - ANI with a root-mean-square error of 0.00274. Thus, Mash enables scalable, whole-genome clustering. \\ \\
+With a pre-computed sketch database, Mash is able to identify isolated genomes from both assemblies within a few seconds and identify the Lowest Common Ancestor (LCA) from raw sequencing reads within a couple of minutes. Additional work is needed until Mash can be used to discern genome identity from raw sequencing reads, possibly by filtering out low frequency k-mers or increasing the sketch size. \\ \\
+The computation of large-scale metagenomic comparison is a challenge that more and more people are facing. Mash can also cluster metagenomic datasets in a fraction of the time other metagenomic comparison tools use. DSM, which uses an exact Jaccard Index, and COMMET, which attempts to identify a set of similar reads between two samples using Bloom filters, are both metagenomic comparison tools commonly used today. In a comparison between COMMET and Mash on a pool of Global Ocean Survey (GOS) data, Mash was over ten times faster than COMMET and correctly identified clusters from the original GOS study. Thus, Mash provided a time efficient way to analyze and cluster large-scale metagenomic data. \\ \\
+Mash enables the comparison and clustering of whole genomes and metagenomes on a massive scale. However, after additional research, we saw no reference of using any other LSH to hash and compare genomic sequences, so we pursued a research project on a competing LSH algorithm: SimHash. Previous studies suggest SimHash can be used for the same purpose as MinHash in analyzing resemblance. \\ \\
+SimHash is another Locality Sensing Hashing (LSH) Algorithm that determines the similarity between data using cosine similarity. In 2014, Shrivastava et al. compared MinHash and SimHash on binary data and determined MinHash was consistently better than SimHash irregardless of the dataset or the number of hash functions used.\cite{MinvsSim} When compared in a worst case scenario as well as in an idealized scenario, MinHash outperformed SimHash, which held up in a number of tests on actual data. For binary data, Shrivastava et al. proved theoretically that MinHash is a sensitive family of hash functions for cosine similarity. Although the results for binary data suggest that MinHash is a better LSH algorithm, no tests have yet been done on how SimHash performs on genomic data, a fact we will explore.
 
-Mash has been used to cluster all of the NCBI RefSeq Release 70, totaling 54,118 organisms and 618 Gbp of genomic sequence. The resulting sketches yielded a compression factor of more than 7000-fold versus the uncompressed FASTA (93 MB vs. 674 GB) and only took 33 CPU hours. Additionally, adding a genome to the database took approximately 0.9 CPU seconds per 5 MB genome. However, fast and space-efficient only works if the results are valid. A comparison of Mash distance and ANI, a  measure of genetic similarity, among a subset of 500 E. coli genomes, found Mash distances correlate well with ANI. For a sketch size of 1,000 and k-mer size of 21, Mash approximates 1 - ANI with a root-mean-square error of 0.00274. Thus, Mash enables scalable, whole-genome clustering. 
-
-With a pre-computed sketch database, Mash is able to identify isolated genomes from both assemblies within a few seconds and identify the Lowest Common Ancestor (LCA) from raw sequencing reads within a couple of minutes. Additional work is needed until Mash can be used to discern genome identity from raw sequencing reads, possibly by filtering out low frequency k-mers or increasing the sketch size.
-
-Mash can also cluster metagenomic datasets in a fraction of the time other metagenomic comparison tools use. DSM, which uses an exact Jaccard Index, and COMMET, which attempts to identify a set of similar reads between two samples using Bloom filters, are both metagenomic comparison tools commonly used today. In a comparison between COMMET and Mash on a pool of Global Ocean Survey (GOS) data, Mash was over ten times faster than COMMET and correctly identified clusters from the original GOS study. Thus, Mash provided a time efficient way to analyze and cluster large-scale metagenomic data.
-
-Mash enables the comparison and clustering of whole genomes and metagenomes on a massive scale. However, after additional research, we saw no reference of using any other LSH to hash and compare genomic sequences, so we pursued a research project on a competing LSH algorithm: SimHash. Previous studies suggest SimHash can be used for the same purpose as MinHash in analyzing resemblance. 
-
+% ----------------------------------------------------------------------------------------------------------------------------
+% Methods and Software
+% ----------------------------------------------------------------------------------------------------------------------------
 \section{Research Methods and Software}
 
-
 \subsection{Exploration with MinHash}
-We explored the algorithm and libraries of MinHash to better understand the properties behind MinHash, better understand how MinHash performs and works, and to confirm that we are able to achieve the results of the MASH paper. To accomplish this, we used a Python implementation of Mash called SourMash\cite{GitHub-Sourmash}, which was developed by Titus Brown and Luiz Irber from UC Davis and is available open-source. The data that we ran the MinHash library on was 300+ E. coli genomes, which were compared between each other. We achieved and determined a minimum distance of 0.378. \color{red} TO DO \color{black} \ref{fig:All Ecoli} The E. coli genomes were downloaded from the RefSeq database and a full list is available in the appendix.
 
+We explored the algorithm and libraries of MinHash to better understand the properties behind MinHash, better understand how MinHash performs and works, and confirm that we are able to achieve the results of the MASH paper.
+
+\subsubsection{Dataset}
+The data that we ran the MinHash library on was all downloaded from the NCBI reference database on December 7, 2017. To determine how MinHash performs on similar data, we downloaded 300+ complete E. coli genomes, which were then compared between each other. For development of the phylogenetic tree, we dewnloaded the reference genomes pf the following species: Callithrix jacchus, Carlito syrichta, Chlorocebus sabaeus, Gorilla gorilla gorilla, Homo sapiens, Macaca fascicularis, Macaca mulatta, Microcebus murinus, Nasalis larvatus, Nomascus leucogenys, Otolemur garnettii, Pan paniscus, Pan troglodytes, Papio anubis, Pongo abelii, Rhinopithecus roxellana, and Saimiri boliviensis boliviensis. Bacillus anthracis, Bacillus cereus, and Zaire ebolavirus reference genomes were also downloaded and compared to several previously downloaded E. coli genomes to determine how MinHahs performs on disparate data.
+
+\subsubsection{Method}
+To accomplish this, we used a Python implementation of Mash called SourMash, which was developed by Titus Brown and Luiz Irber from UC Davis and is available as an open-source spftware.\cite{GitHub-Sourmash} This implementation was aided by !!!!
 
 \subsection{Exploration with SimHash}
 \subsubsection{Dataset}
@@ -73,7 +79,6 @@ Upon surveying the existing code in the Python-based SimHash, we found that ther
 
 \subsubsection{Go-based SimHash}
 Our design and coding of the Go-based SimHash was similar to the Python-based SimHash. By basing our code on the Go library, we made a fundamental modification to accept genomic data. A special particularity with the unmodified Go-based SimHash library is that though the library has the method for making shingles of words, it does not appear to be used. Also, the unmodified Go-based SimHash library very much assumes that the input is string of English words that could or could not be encoded in Unicode. Thus, we made fundamental modifications to the feature construction in the Go-based SimHash library to accept genomic data. Some of the modifications included building the features based on whether it is a substring of lowercase bases or uppercase bases, or building the features based on a k-mer size of say 15. We continued with the use of 64 bit hashes in Go.
-
 
 \subsubsection{Evolution of our Research}
 With both our Python-based SimHash and Go-based SimHash code, we fed in the genomic data to test how the core SimHash algorithm performs. Recall that the genomic data consisted of one strain of E. coli, which is about 4.5 million bases, while both of the yeast strands are about 12 million bases each. After running the SimHash algorithm in each respective language and observing the output of the distance between the genomic data, we found that the results were lackluster. \\ \\
@@ -120,19 +125,52 @@ for subset of observed k-mers in file_2:
 similarity_distance = 1 - cosine(vector1, vector2)
 \end{verbatim}
 
-
-
-
-\section{Contributions of Each Member}
-[1 paragraph] \color{red} TO DO \color{black}
-
+% ---------------------------------------------------------------------------------------------------------------------------
+% Results
+% ---------------------------------------------------------------------------------------------------------------------------
 \section{Results}
 [1.5 pages] \color{red} TO DO \color{black} Insert results of different k-mer sizes and of different genomic sequences.
 
+
+\subsection{MinHash}
+In our exploration of MinHash we compared whole genomes of varying similarity to both replicate the data in the paper by Ondov et al. and evaluate the MinHash algorithm as a whole. To replicate the results of Ondov et al., we ran MinHash on a set of primate genomes to create a pylogenic tree. This tree was then compared to the trees obtained by the UCSC genome browser and Ondov et al. to determine if MinHash was performing correctly.\ref{fig:Primate Tree} The resulting phylogenetic tree was slightly different from the reference trees. In our result, the Philippine tarsier was closer to the Northern greater galago and Gray mouse lemur. Additionally, we obtained the result that Chimpanzees are closer to Humans than to Bonobos, a result echoed by Ondov et al.'s implementation of MinHash.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.6\textwidth]{Figure4_Ondov}
+    \includegraphics[width=0.3\textwidth]{Apes_Matrix_Common}
+    \caption{A Comparison of Primate Phylogenetic Trees. \textbf{a} A primate phylogenetic tree model from the UCSC genome browser, with branch lengths derived from fourfold degenerate sites extracted from reference gene multiple alignments. \textbf{b} Ondov et al.'s Mash-based tree generated from whole genomes using a sketch size of s = 1000 and k-mer size of k = 21.\cite{MinHash} \textbf{c} SourMash-based tree generated from whole genomes using a sketch size of s = 1000 and k-mer size of k = 21.}
+    \label{fig:Primate Tree}
+\end{figure}
+
+To evaluate MinHash on datasets with a high degree of similarity, we ran Minhash on over 300 E. Coli genomes downloaded from the NCBI Reference database. We were able to cluster E Coli strains and map similarities between strains.\ref{fig:All Ecoli} The minimum similarity within all genomes compared was a distance of 0.378 between Escherichia coli strain K-12 substrand MDS42 and Escherichia coli APEC O1. This is to be expected as a Multilocus sequence typing (MLST) of these two strains of E. coli yielded a similarity of only 98.1, far below the similarity with other E. coli strains.\cite{E coli}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=1.0\textwidth]{All_E_coli}
+    \caption{A Similarity Comparison of 397 \textit{E. coli} Species. This matrix shows similarity as darker in color. Note the darker colored diagonal line that stretches the matrix. This indicates the high similarity that occurs when a genome is compared to itself. The mminimum similarity within all genomes compared was a distance of 0.378 between Escherichia coli strain K-12 substrand MDS42 and Escherichia coli APEC O1.}
+    \label{fig:All Ecoli}
+\end{figure}
+
+\subsection{SimHash}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=1.0\textwidth]{Simhash_kmer_result.png}
+	\caption{SimHash Test Results}
+	\label{fig:SimHashDescription}
+\end{figure}
+
+
+\subsection{SMASH}
+
+% ---------------------------------------------------------------------------------------------------------------------------
+% Conclusions
+% ---------------------------------------------------------------------------------------------------------------------------
 \section{Conclusions}
 [0.5 pages] \color{red} TO DO \color{black} There are more ways to judge similarity between two genomic sequences than just hashing the entirety of each of the genome and comparing how close in relation both are.
 
-
+\section{Contributions of Each Member}
+[1 paragraph] \color{red} TO DO \color{black}
 
 % ---------------------------------------------------------------------------------------------------------------------------
 % Bibliography
@@ -143,6 +181,11 @@ similarity_distance = 1 - cosine(vector1, vector2)
   C. Titus Brown and Luiz C. Irber, Jr.
   \textit{SourMash}.
   GitHub repository, https://github.com/dib-lab/sourmash, 2016.
+  
+\bibitem{E coli} 
+  Timothy J. Johnson, Subhashinie Kariyawasam, Yvonne Wannemuehler, Paul Mangiamele, Sara J. Johnson, Curt Doetkott, Jerod A. Skyberg, Aaron M. Lynne, James R. Johnson, and Lisa K. Nolan.
+  \textit{The Genome Sequence of Avian Pathogenic Escherichia coli Strain O1:K1:H7 Shares Strong Similarities with Human Extraintestinal Pathogenic E. coli Genomes}.
+  Journal of Bacteriology, 189(8):3228-3236, 2007.
   
 \bibitem{simhash} 
   Caitlin Sadowski and Greg Levin.

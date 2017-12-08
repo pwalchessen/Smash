@@ -21,12 +21,16 @@
 \begin{document}
 
 \maketitle
-
+% ----------------------------------------------------------------------------------------------------------------------------
+% Abstract
+% ----------------------------------------------------------------------------------------------------------------------------
 \begin{abstract}
 	[1 paragraph] \color{red} TO DO \color{black} Final Project Abstract
 \end{abstract}
 
-
+% ----------------------------------------------------------------------------------------------------------------------------
+% Introduction
+% ----------------------------------------------------------------------------------------------------------------------------
 \section{Introduction}
 An intriguing and common problem that arises in computation is efficiently comparing the similiarities between high-dimensional data. The problem reaches into the far corners of computation, including machine learning and kernels. In bioinformatics, the problem takes the form of determining the similarity between both close and disparate long genomic sequences. Solving the challenge of comparing long genomic sequences would aid in evaluating evolutionary relationships, determining the organismal source of sequencing data, and comparing metagenomic data. \\ \\
 One class of algorithms that could solve this problem is Locality-Sensitive Hashing (LSH) algorithms. LSH algorithms reduce data dimensionality and bin inputs such that similar data sets are grouped together with high probability. They solve the problem of approximate or exact Near Neighbor Search. In recent years LSH algorithms have offered solutions to problems such as: near-duplicate detection, genome-wide association, and both image and audio similarity identification. There are two prevalent LSH algorithms: MinHash and SimHash. \\ \\
@@ -66,7 +70,7 @@ SimHash is another Locality Sensing Hashing (LSH) Algorithm that determines the 
 We explored the algorithm and libraries of MinHash to better understand the properties behind MinHash, better understand how MinHash performs and works, and confirm that we are able to achieve the results of the MASH paper.
 
 \subsubsection{Dataset}
-The data that we ran the MinHash library on was all downloaded from the NCBI reference database on December 7, 2017. To determine how MinHash performs on similar data, we downloaded 300+ complete E. coli genomes, which were then compared between each other. For development of the phylogenetic tree, we dewnloaded the reference genomes pf the following species: Gorilla gorilla gorilla, Homo sapiens, Macaca fascicularis, Macaca mulatta, Microcebus murinus, Nasalis larvatus, Nomascus leucogenys, Otolemur garnettii, Pan paniscus, Pan troglodytes, Pongo abelii, Rhinopithecus roxellana, and Saimiri boliviensis boliviensis. Bacillus anthracis, Bacillus cereus, and Zaire ebolavirus reference genomes were also downloaded and compared to several previously downloaded E. coli genomes to determine how MinHahs performs on disparate data.
+The data that we ran the MinHash library on was all downloaded from the NCBI reference database on December 7, 2017. To determine how MinHash performs on similar data, we downloaded 300+ complete E. coli genomes, which were then compared between each other. For development of the phylogenetic tree, we dewnloaded the reference genomes pf the following species: Callithrix jacchus, Carlito syrichta, Chlorocebus sabaeus, Gorilla gorilla gorilla, Homo sapiens, Macaca fascicularis, Macaca mulatta, Microcebus murinus, Nasalis larvatus, Nomascus leucogenys, Otolemur garnettii, Pan paniscus, Pan troglodytes, Papio anubis, Pongo abelii, Rhinopithecus roxellana, and Saimiri boliviensis boliviensis. Bacillus anthracis, Bacillus cereus, and Zaire ebolavirus reference genomes were also downloaded and compared to several previously downloaded E. coli genomes to determine how MinHahs performs on disparate data.
 
 \subsubsection{Method}
 To accomplish this, we used a Python implementation of Mash called SourMash, which was developed by Titus Brown and Luiz Irber from UC Davis and is available as an open-source spftware.\cite{GitHub-Sourmash} This implementation was aided by !!!!

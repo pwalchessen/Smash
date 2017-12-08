@@ -1,9 +1,5 @@
 #!/usr/bin/env python2
 # -*- coding: utf-8 -*-
-"""
-Created on Thu Nov 16 16:15:27 2017
-
-"""
 
 import re, sys
 from simhash import Simhash

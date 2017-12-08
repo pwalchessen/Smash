@@ -62,8 +62,14 @@ SimHash is another Locality Sensing Hashing (LSH) Algorithm that determines the 
 \section{Research Methods and Software}
 
 \subsection{Exploration with MinHash}
-We explored the algorithm and libraries of MinHash to better understand the properties behind MinHash, better understand how MinHash performs and works, and to confirm that we are able to achieve the results of the MASH paper. To accomplish this, we used a Python implementation of Mash called SourMash\cite{GitHub-Sourmash}, which was developed by Titus Brown and Luiz Irber from UC Davis and is available open-source. The data that we ran the MinHash library on was 300+ E. coli genomes, which were compared between each other. We achieved and determined a minimum distance of 0.378. \ref{fig:All Ecoli} The E. coli genomes were downloaded from the RefSeq database and a full list is available in the appendix.
 
+We explored the algorithm and libraries of MinHash to better understand the properties behind MinHash, better understand how MinHash performs and works, and confirm that we are able to achieve the results of the MASH paper.
+
+\subsubsection{Dataset}
+The data that we ran the MinHash library on was all downloaded from the NCBI reference database on December 7, 2017. To determine how MinHash performs on similar data, we downloaded 300+ complete E. coli genomes, which were then compared between each other. For development of the phylogenetic tree, we dewnloaded the reference genomes pf the following species: Gorilla gorilla gorilla, Homo sapiens, Macaca fascicularis, Macaca mulatta, Microcebus murinus, Nasalis larvatus, Nomascus leucogenys, Otolemur garnettii, Pan paniscus, Pan troglodytes, Pongo abelii, Rhinopithecus roxellana, and Saimiri boliviensis boliviensis. Bacillus anthracis, Bacillus cereus, and Zaire ebolavirus reference genomes were also downloaded and compared to several previously downloaded E. coli genomes to determine how MinHahs performs on disparate data.
+
+\subsubsection{Method}
+To accomplish this, we used a Python implementation of Mash called SourMash, which was developed by Titus Brown and Luiz Irber from UC Davis and is available as an open-source spftware.\cite{GitHub-Sourmash} This implementation was aided by !!!!
 
 \subsection{Exploration with SimHash}
 \subsubsection{Dataset}
@@ -124,19 +130,17 @@ for subset of observed k-mers in file_2:
 similarity_distance = 1 - cosine(vector1, vector2)
 \end{verbatim}
 
-
-
-
-\section{Contributions of Each Member}
-[1 paragraph] \color{red} TO DO \color{black}
-
 \section{Results}
 [1.5 pages] \color{red} TO DO \color{black} Insert results of different k-mer sizes and of different genomic sequences.
+
+% MinHash
+We achieved and determined a minimum distance of 0.378. \ref{fig:All Ecoli}
 
 \section{Conclusions}
 [0.5 pages] \color{red} TO DO \color{black} There are more ways to judge similarity between two genomic sequences than just hashing the entirety of each of the genome and comparing how close in relation both are.
 
-
+\section{Contributions of Each Member}
+[1 paragraph] \color{red} TO DO \color{black}
 
 % ---------------------------------------------------------------------------------------------------------------------------
 % Bibliography

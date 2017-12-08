@@ -39,12 +39,14 @@ MinHash computes the differences between two genomic sequences through the estim
 \section{Prior Work}
 In 2016, Ondov et al. used MinHash to analyze the resemblance between genomes and metagenomes \cite{MinHash}. They altered the MinHash algorithm to include pairwise mutation distance, or Mash distance, which estimates the rate of sequence mutation under a simple evolutionary model. Their modifications allowed Mash to efficiently cluster and search massive sequence collections. Mash, as they call their implementation, has two main components: \textit{sketch} and \textit{dist}. The \textit{sketch} function creates MinHash sketches from a sequence or a collection of sequences. \textit{Dist} compares two sketches and returns an estimate of the Jaccard index (ratio of the shared identity between sets), a P value, and the Mash distance.\ref{fig:MinHashDescription}
 % Mash description Figure 
+\FloatBarrier
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=0.5\textwidth]{Mash_description.png}
 	\caption{Description of MinHash: First, the sequences divided into their constituent k-mers. Each k-mer is then passed through a hash function to obtain a 32- or 64-bit hash. The Jaccard index is ratio of shared hashes between A and B over all distinct hashes in A and B. The Jaccard Index can be approximated by considering a smaller subset of A and B. MinHash sketches S(A) and S(B) of size 5 are shown for A and B, comprising the five smallest hash values. The Jaccard Index is determined by dividing the similarity between S(A) and S(B) by the distinct values in S(A) and S(B).}
 	\label{fig:MinHashDescription}
 \end{figure}
+\FloatBarrier
 Two important parameters within Mash are sketch k-mer sizes. A larger sketch size improves accuracy of the Mash estimates, particularly for divergent genomes, but increases the space and time required for computing distances. The determination of k-mer size alters sensitivity and specificity. Smaller values of k-mer size are more sensitive for divergent genomes, but lose specificity for large genomes due to k-mer collisions. Larger values of k-mer size lose sensitivity. Thus, choosing the smallest k-mer size that reduces chance collisions is important and the k-mer size will change depending on the divergence of the genomes. To maximize sensitivity and specificity, Mash uses a default k-mer size of 21 and a sketch size of 1,000. According to preliminary research by Ondov et al., Mash can be used to cluster whole genomes, identify the genome in real-time  from assemblies or reads, and cluster massive metagenomic databases. \\ \\
 Mash has been used to cluster all of the NCBI RefSeq Release 70, totaling 54,118 organisms and 618 Gbp of genomic sequence. The resulting sketches yielded a compression factor of more than 7000-fold versus the uncompressed FASTA (93 MB vs. 674 GB) and only took 33 CPU hours of a typical computer in 2016. Additionally, adding a genome to the database took approximately 0.9 CPU seconds per 5 MB genome. However, fast and space-efficient only works if the results are valid. A comparison of Mash distance and ANI, a  measure of genetic similarity, among a subset of 500 E. coli genomes, found Mash distances correlate well with ANI. For a sketch size of 1,000 and k-mer size of 21, Mash approximates 1 - ANI with a root-mean-square error of 0.00274. Thus, Mash enables scalable, whole-genome clustering. \\ \\
 With a pre-computed sketch database, Mash is able to identify isolated genomes from both assemblies within a few seconds and identify the Lowest Common Ancestor (LCA) from raw sequencing reads within a couple of minutes. Additional work is needed until Mash can be used to discern genome identity from raw sequencing reads, possibly by filtering out low frequency k-mers or increasing the sketch size. \\ \\
@@ -145,20 +147,24 @@ In our exploration of MinHash we compared whole genomes of varying similarity to
 
 To evaluate MinHash on datasets with a high degree of similarity, we ran Minhash on over 300 E. Coli genomes downloaded from the NCBI Reference database. We were able to cluster E Coli strains and map similarities between strains.\ref{fig:All Ecoli} The minimum similarity within all genomes compared was a distance of 0.378 between Escherichia coli strain K-12 substrand MDS42 and Escherichia coli APEC O1. This is to be expected as a Multilocus sequence typing (MLST) of these two strains of E. coli yielded a similarity of only 98.1, far below the similarity with other E. coli strains.\cite{E coli}
 
+\FloatBarrier
 \begin{figure}[h]
     \centering
     \includegraphics[width=1.0\textwidth]{All_E_coli}
     \caption{A Similarity Comparison of 397 \textit{E. coli} Species. This matrix shows similarity as darker in color. Note the darker colored diagonal line that stretches the matrix. This indicates the high similarity that occurs when a genome is compared to itself. The mminimum similarity within all genomes compared was a distance of 0.378 between Escherichia coli strain K-12 substrand MDS42 and Escherichia coli APEC O1.}
     \label{fig:All Ecoli}
 \end{figure}
+\FloatBarrier
 
 \subsection{SimHash}
+\FloatBarrier
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=1.0\textwidth]{Simhash_kmer_result.png}
 	\caption{SimHash Test Results}
 	\label{fig:SimHashDescription}
 \end{figure}
+\FloatBarrier
 
 
 \subsection{SMASH}

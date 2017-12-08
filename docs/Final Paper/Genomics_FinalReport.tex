@@ -88,7 +88,6 @@ Upon surveying the existing code in the Python-based SimHash, we found that ther
 \subsubsection{Go-based SimHash}
 Our design and coding of the Go-based SimHash was similar to the Python-based SimHash. By basing our code on the Go library, we made a fundamental modification to accept genomic data. A special particularity with the unmodified Go-based SimHash library is that though the library has the method for making shingles of words, it does not appear to be used. Also, the unmodified Go-based SimHash library very much assumes that the input is string of English words that could or could not be encoded in Unicode. Thus, we made fundamental modifications to the feature construction in the Go-based SimHash library to accept genomic data. Some of the modifications included building the features based on whether it is a substring of lowercase bases or uppercase bases, or building the features based on a k-mer size of say 15. We continued with the use of 64 bit hashes in Go.
 
-
 \subsubsection{Evolution of our Research}
 With both our Python-based SimHash and Go-based SimHash code, we fed in the genomic data to test how the core SimHash algorithm performs. Recall that the genomic data consisted of one strain of E. coli, which is about 4.5 million bases, while both of the yeast strands are about 12 million bases each. After running the SimHash algorithm in each respective language and observing the output of the distance between the genomic data, we found that the results were lackluster. \\ \\
 While say between one of the yeast strands and the E. coli, the SimHash algorithm was able to distinguish that they were quite different, the SimHash algorithm outputted that the difference between the other yeast strand and E. coli vs. the difference between both of the yeast strands was about equivalent. Fundamentally, just from the fact that E. coli is a much shorter genome, the result showed that SimHash was losing some sort of resolution. \\ \\
@@ -134,12 +133,25 @@ for subset of observed k-mers in file_2:
 similarity_distance = 1 - cosine(vector1, vector2)
 \end{verbatim}
 
+% ---------------------------------------------------------------------------------------------------------------------------
+% Results
+% ---------------------------------------------------------------------------------------------------------------------------
 \section{Results}
 [1.5 pages] \color{red} TO DO \color{black} Insert results of different k-mer sizes and of different genomic sequences.
 
 % MinHash
-We achieved and determined a minimum distance of 0.378. \ref{fig:All Ecoli}
+In our exploration of MinHash we compared whole genomes of varying similarity to both replicate the data in the paper by Ondov et al. and evaluate the MinHash algorithm as a whole. To evaluate MinHash on datasets with a high degree of similarity, we ran Minhash on over 300 E. Coli genomes downloaded from the NCBI Reference database. We were able to cluster E Coli strains and map similarities between strains.\ref{fig:All Ecoli} The minimum similarity within all genomes compared was a distance of 0.378 between Escherichia coli strain K-12 substrand MDS42 and Escherichia coli APEC O1. This is to be expected as a Multilocus sequence typing (MLST) of these two strains of E. coli yielded a similarity of only 98.1, far below the similarity with other E. coli strains. \ref{fig:All Ecoli}
 
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.5\textwidth]{All_E_coli}
+    \caption{A Similarity Comparison of 397 \textit{E. coli} Species. This matrix shows similarity as darker in color. Note the darker colored diagonal line that stretches the matrix. This indicates the high similarity that occurs when a genome is compared to itself. The mminimum similarity within all genomes compared was a distance of 0.378 between Escherichia coli strain K-12 substrand MDS42 and Escherichia coli APEC O1.}
+    \label{fig:All Ecoli}
+\end{figure}
+
+% ---------------------------------------------------------------------------------------------------------------------------
+% Conclusions
+% ---------------------------------------------------------------------------------------------------------------------------
 \section{Conclusions}
 [0.5 pages] \color{red} TO DO \color{black} There are more ways to judge similarity between two genomic sequences than just hashing the entirety of each of the genome and comparing how close in relation both are.
 

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6350 64-bit) (preloaded format=pdflatex 2017.9.5)  8 DEC 2017 19:35
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6350 64-bit) (preloaded format=pdflatex 2017.9.5)  8 DEC 2017 19:38
 entering extended mode
 **./Genomics_FinalReport.tex
 (Genomics_FinalReport.tex
@@ -600,7 +600,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 49--54
 
  []
 
-[3 <./Mash_description.png>] [4] [5] [6] [7]
+[3 <./Mash_description.png>] [4] [5] [6]
 Underfull \hbox (badness 10000) in paragraph at lines 84--89
 
  []
@@ -620,7 +620,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 84--89
 
  []
 
-[8]
+[7] [8]
 Underfull \hbox (badness 10000) in paragraph at lines 95--98
 
  []
@@ -688,7 +688,7 @@ Here is how much of TeX's memory you used:
  6909 multiletter control sequences out of 15000+200000
  7494 words of font info for 27 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 39i,6n,28p,1044b,258s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 39i,6n,28p,1044b,235s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Program Files/MiKTeX 2.9/fonts/type1/publi
 c/amsfonts/cm/cmbx10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfon
 ts/cm/cmbx12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cm
@@ -696,7 +696,7 @@ r10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><
 C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Progra
 m Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:/Program Files/
 MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
-Output written on Genomics_FinalReport.pdf (26 pages, 790528 bytes).
+Output written on Genomics_FinalReport.pdf (26 pages, 790434 bytes).
 PDF statistics:
  124 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)

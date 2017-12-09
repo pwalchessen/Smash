@@ -14,7 +14,7 @@ import jellyfish
 from scipy.spatial.distance import cosine
 from os import listdir
 from os.path import isfile, join
-if len(sys.argv != 3):
+if len(sys.argv) != 3:
     print "Usage: ./compare_jfs.py /path/to/dir/with/jf/files/ k"
     print "If jellyfish indexes are not built for folder with data, please run smash.sh"
     sys.exit()

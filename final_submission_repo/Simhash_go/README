@@ -1,0 +1,5 @@
+Install Go 1.9+
+
+Go into the src folder.
+
+Run "go run main.go"

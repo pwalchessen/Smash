@@ -176,7 +176,20 @@ To evaluate MinHash on datasets with a high degree of similarity, we ran Minhash
 
 
 \subsection{SMASH}
-\color{red} TO DO \color{black}
+We performed SMASH comparisons between 18 E. coli datasets under a variety parameters, recording both the Jaccard index and the cosine similarity of the counted k-mers. We considered k-mer sizes of 15, 18, and 21. We had two aims in performing this comparison: determining how different the Jaccard index and the cosine similarity are in this implementation, and determining if cosine similarity can successfully determine genetic similarity. We found that cosine similarity and Jaccard index were extremely well correlated (FIG), and remarkably, that the relationship between cosine similarity and Jaccard index appears to be roughly maintained between k-mer sizes. We also find that both cosine similarity and Jaccard index in this implementation results in well defined clusters of similar genome assemblies, indicating that evolutionary relationships are being reflected. Known evolutionary relationships appear to be maintained in these results, as in both cosine and jaccard similarities the similarity between two closely related E coli strains (K-12 AG 100 vs and O6:H16; cosine = 0.756061, jaccard = 0.692374 for k=21) is much higher than the relationship between either strain and a distantly related strain (K-12 AG 100 vs. O169:H41; cosine = 0.650387, jaccard = 0.489714 for k=21); (O6:H16 vs. O169:H41; cosine = 0.577237 , jaccard = 0.466792 for k=21), known evolutionary relationships via genomic BLAST phylogeny tree on NCBI.
+\FloatBarrier
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=1.0\textwidth]{smashchart.png}
+\end{figure}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=1.0\textwidth]{smashtable.png}
+\end{figure}
+\FloatBarrier
+Despite jellyfish speeding up k-mer counting considerably, the time to compare our data sets remains high using this method, in part due to high memory overhead of loading a large hash of k-mer counts for comparing counts. An ideal implementation would reduce the size of k-mer vector being considered, thereby reducing memory overhead. To do this we attempted to utilize the bloom counter function built in to jellyfish to filter out single-count k-mers in the counting step. Unfortunately, the documentation provided for using the jellyfish bloom-counter appears to be out of date, and debugging this approach was not completed.
+
 % ---------------------------------------------------------------------------------------------------------------------------
 % Conclusions
 % ---------------------------------------------------------------------------------------------------------------------------
@@ -185,12 +198,11 @@ Similarly to how MinHash needed to be adapted for genomic data processing with t
 
 
 \section{Contributions of Each Member}
-[1 paragraph] \color{red} TO DO \color{black}
 \begin{itemize}
-\item Nathan Roach:
+\item Nathan Roach: Nathan worked on a de novo implementation of simhash, implemented in smash.sh and compare\_jfs.py (with a deprecated implementation in npr\_smash.py). This involved counting k-mer frequencies using jellyfish and finding and comparing the cosine similarity and jaccard index of the counted k-mers between \textit{E. coli} datasets. He also worked on speeding up the smash algorithm by implementing jellyfish's bloom counter. Unfortunately, as discussed above, this did not work.
 \item Patricia Walchessen: 
 \item Charlie Wang: 
-\item Yue Zhang:
+\item Yue Zhang: Yue Zhang worked on implementing the SimHash algorithm to analyze the relative genomic distance between \textit{S. cer}, \textit{S. pomb} and \textit{E. coli} at different kmer sizes.
 \end{itemize}
 
 % ---------------------------------------------------------------------------------------------------------------------------

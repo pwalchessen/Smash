@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6350 64-bit) (preloaded format=pdflatex 2017.9.5)  8 DEC 2017 22:09
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6350 64-bit) (preloaded format=pdflatex 2017.9.5)  8 DEC 2017 22:33
 entering extended mode
 **./Genomics_FinalReport.tex
 (Genomics_FinalReport.tex
@@ -547,23 +547,23 @@ Overfull \hbox (37.68484pt too wide) in paragraph at lines 23--23
  []
 
 
-Overfull \hbox (0.83575pt too wide) in paragraph at lines 35--39
+Overfull \hbox (0.83575pt too wide) in paragraph at lines 42--46
 \OT1/cmr/m/n/12 de-ter-min-ing sim-i-lar-i-ties be-tween high-dimensional data.
  The prob-lem reaches
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 35--39
+Underfull \hbox (badness 10000) in paragraph at lines 42--46
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 35--39
+Underfull \hbox (badness 10000) in paragraph at lines 42--46
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 35--39
+Underfull \hbox (badness 10000) in paragraph at lines 42--46
 
  []
 
@@ -574,70 +574,70 @@ Underfull \hbox (badness 10000) in paragraph at lines 35--39
 File: Mash_description.png Graphic file (type png)
 
 <use Mash_description.png>
-Package pdftex.def Info: Mash_description.png used on input line 48.
+Package pdftex.def Info: Mash_description.png used on input line 55.
 (pdftex.def)             Requested size: 195.0pt x 336.95491pt.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 [3]
-Underfull \hbox (badness 10000) in paragraph at lines 52--58
+Underfull \hbox (badness 10000) in paragraph at lines 59--65
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 52--58
+Underfull \hbox (badness 10000) in paragraph at lines 59--65
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 52--58
+Underfull \hbox (badness 10000) in paragraph at lines 59--65
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 52--58
+Underfull \hbox (badness 10000) in paragraph at lines 59--65
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 52--58
+Underfull \hbox (badness 10000) in paragraph at lines 59--65
 
  []
 
 [4 <./Mash_description.png>] [5] [6] [7]
-Underfull \hbox (badness 10000) in paragraph at lines 88--93
+Underfull \hbox (badness 10000) in paragraph at lines 95--100
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 88--93
+Underfull \hbox (badness 10000) in paragraph at lines 95--100
 
  []
 
 
-Overfull \hbox (0.9015pt too wide) in paragraph at lines 88--93
+Overfull \hbox (0.9015pt too wide) in paragraph at lines 95--100
 \OT1/cmr/m/n/12 We first thought these re-sults might be due to how the Python-
 based SimHash
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 88--93
+Underfull \hbox (badness 10000) in paragraph at lines 95--100
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 88--93
+Underfull \hbox (badness 10000) in paragraph at lines 95--100
 
  []
 
 [8] [9]
-Underfull \hbox (badness 10000) in paragraph at lines 99--102
+Underfull \hbox (badness 10000) in paragraph at lines 106--109
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 99--102
+Underfull \hbox (badness 10000) in paragraph at lines 106--109
 
  []
 
@@ -645,17 +645,17 @@ Underfull \hbox (badness 10000) in paragraph at lines 99--102
 File: Figure4_Ondov.png Graphic file (type png)
 
 <use Figure4_Ondov.png>
-Package pdftex.def Info: Figure4_Ondov.png used on input line 144.
+Package pdftex.def Info: Figure4_Ondov.png used on input line 151.
 (pdftex.def)             Requested size: 390.0pt x 166.03505pt.
 
 <Apes_Matrix_Common.png, id=47, 764.6166pt x 422.0568pt>
 File: Apes_Matrix_Common.png Graphic file (type png)
 
 <use Apes_Matrix_Common.png>
-Package pdftex.def Info: Apes_Matrix_Common.png used on input line 145.
+Package pdftex.def Info: Apes_Matrix_Common.png used on input line 152.
 (pdftex.def)             Requested size: 390.0pt x 215.2783pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 141--150
+Underfull \hbox (badness 10000) in paragraph at lines 148--157
 
  []
 
@@ -666,14 +666,14 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 <All_E_coli.png, id=57, 794.97pt x 578.16pt>
 File: All_E_coli.png Graphic file (type png)
  <use All_E_coli.png>
-Package pdftex.def Info: All_E_coli.png used on input line 154.
+Package pdftex.def Info: All_E_coli.png used on input line 161.
 (pdftex.def)             Requested size: 390.0pt x 283.64493pt.
 
 <Simhash_kmer_result.png, id=58, 610.07925pt x 398.08725pt>
 File: Simhash_kmer_result.png Graphic file (type png)
 
 <use Simhash_kmer_result.png>
-Package pdftex.def Info: Simhash_kmer_result.png used on input line 164.
+Package pdftex.def Info: Simhash_kmer_result.png used on input line 171.
 (pdftex.def)             Requested size: 390.0pt x 254.4834pt.
 
 
@@ -682,12 +682,18 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 [14
 
  <./All_E_coli.png>] [15 <./Simhash_kmer_result.png>]
-Overfull \hbox (28.48633pt too wide) in paragraph at lines 199--203
+Overfull \hbox (28.48633pt too wide) in paragraph at lines 206--210
 \OT1/cmr/m/it/12 tion\OT1/cmr/m/n/12 . http://citeseerx.ist.psu.edu/viewdoc/dow
 nload?doi=10.1.1.473.7179&rep 
  []
 
-[16] [17] (Genomics_FinalReport.aux) ) 
+[16]
+Underfull \hbox (badness 3039) in paragraph at lines 222--225
+[]\OT1/cmr/m/n/12 James Turk and Michael Stephens. \OT1/cmr/m/it/12 Jel-ly-fish
+\OT1/cmr/m/n/12 . GitHub repos-i-tory,
+ []
+
+[17] (Genomics_FinalReport.aux) ) 
 Here is how much of TeX's memory you used:
  3428 strings out of 493323
  47074 string characters out of 3139061
@@ -695,15 +701,15 @@ Here is how much of TeX's memory you used:
  6918 multiletter control sequences out of 15000+200000
  7494 words of font info for 27 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 39i,7n,28p,1030b,237s stack positions out of 5000i,500n,10000p,200000b,50000s
-<C:/Program Files/MiKTeX 2.9/fonts/type1/
-public/amsfonts/cm/cmbx10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/a
-msfonts/cm/cmbx12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/
-cm/cmr10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.
-pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/P
-rogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:/Program F
-iles/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
-Output written on Genomics_FinalReport.pdf (17 pages, 784517 bytes).
+ 39i,7n,28p,1030b,235s stack positions out of 5000i,500n,10000p,200000b,50000s
+<C:/Program Files/MiKTeX 2.9/fonts/type1/publi
+c/amsfonts/cm/cmbx10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfon
+ts/cm/cmbx12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cm
+r10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><
+C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Progra
+m Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:/Program Files/
+MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
+Output written on Genomics_FinalReport.pdf (17 pages, 785816 bytes).
 PDF statistics:
  95 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)

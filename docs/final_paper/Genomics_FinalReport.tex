@@ -72,7 +72,7 @@ To accomplish this, we used a Python implementation of Mash called SourMash, whi
 The data that we tested on encompassed many of the 300+ E. coli genomes as well as multiple different yeast genomes. For the purpose of the discussion in this section, we will talk about the methods developed based on empirical testing on a dataset consisting of 1 E. coli genome and 2 yeast genomes named S. cerevisiae and S. pombe.
 
 \subsubsection{Method}
-To fully explore the application of SimHash in the genomics field, we commenced with surveying the existing SimHash literature and implementations. Next, we looked for existing SimHash libraries, many of which were designed for analyzing websites are texts of English words, and compiled the most reputable ones. From there, we selected two based on their reputation and fork numbers for us to base our code on and to adapt into the genomic field to explore SimHash more extensively. The first is Python-based (https://github.com/leonsim/simhash) and the second is Go-based (https://github.com/mfonda/simhash). \color{red} Cite properly \color{black}
+To fully explore the application of SimHash in the genomics field, we commenced with surveying the existing SimHash literature and implementations. Next, we looked for existing SimHash libraries, many of which were designed for analyzing websites are texts of English words, and compiled the most reputable ones. From there, we selected two based on their reputation and fork numbers for us to base our code on and to adapt into the genomic field to explore SimHash more extensively. The first is Python-based \cite{python-simhash} and the second is Go-based \cite{go-simhash}.
 
 \subsubsection{Python-based SimHash}
 Upon surveying the existing code in the Python-based SimHash, we found that there were some hard-coded values in the library, such as k-mer or shingles sizes of 4. We thus took account of hard-coded values, and then created our own SimHash class based on the Python-based SimHash. The goal with our SimHash class is to enable it to fundamentally accept genomic data and build the shingles based on genomic data, not say English words. One thing to note when we explored the Python-based SimHash was that it relied on using MD5 to hash the keys, and then performed the operations of SimHash and the hamming distance on the MD5 hashes. The hashes were also of 32 bit. In all, we coded a more flexible Python-based SimHash library for running our tests of SimHash on genomic data.
@@ -125,16 +125,16 @@ for subset of observed k-mers in file_2:
 similarity_distance = 1 - cosine(vector1, vector2)
 \end{verbatim}
 
+\subsubsection{Further Development}
+To speed up the counting of k-mers, we explored the use of bloom filter though a Python library called Jellyfish \cite{Jellyfish}. We saw a decrease in needed computation time to achieve our the results highlighted by the above algorithm.
+
 % ---------------------------------------------------------------------------------------------------------------------------
 % Results
 % ---------------------------------------------------------------------------------------------------------------------------
 \section{Results}
-[1.5 pages] \color{red} TO DO \color{black} Insert results of different k-mer sizes and of different genomic sequences.
-
 
 \subsection{MinHash}
-In our exploration of MinHash we compared whole genomes of varying similarity to both replicate the data in the paper by Ondov et al. and evaluate the MinHash algorithm as a whole. To replicate the results of Ondov et al., we ran MinHash on a set of primate genomes to create a pylogenic tree. This tree was then compared to the trees obtained by the UCSC genome browser and Ondov et al. to determine if MinHash was performing correctly.\ref{fig:Primate Tree} The resulting phylogenetic tree was slightly different from the reference trees. In our result, the Philippine tarsier was closer to the Northern greater galago and Gray mouse lemur. Additionally, we obtained the result that Chimpanzees are closer to Humans than to Bonobos, a result echoed by Ondov et al.'s implementation of MinHash.
-
+In our exploration of MinHash we compared whole genomes of varying similarity to both replicate the data in the paper by Ondov et al. and evaluate the MinHash algorithm as a whole. To replicate the results of Ondov et al., we ran MinHash on a set of primate genomes to create a pylogenic tree. This tree was then compared to the trees obtained by the UCSC genome browser and Ondov et al. to determine if MinHash was performing correctly.\ref{fig:Primate Tree} The resulting phylogenetic tree was slightly different from the reference trees. In our result, the Philippine tarsier was closer to the Northern greater galago and Gray mouse lemur. Additionally, we obtained the result that Chimpanzees are closer to Humans than to Bonobos, a result echoed by Ondov et al.'s implementation of MinHash. \\ \\
 \begin{figure}[h]
     \centering
     \includegraphics[width=1.0\textwidth]{Figure4_Ondov}
@@ -142,7 +142,6 @@ In our exploration of MinHash we compared whole genomes of varying similarity to
     \caption{A Comparison of Primate Phylogenetic Trees. \textbf{a} A primate phylogenetic tree model from the UCSC genome browser, with branch lengths derived from fourfold degenerate sites extracted from reference gene multiple alignments. \textbf{b} Ondov et al.'s Mash-based tree generated from whole genomes using a sketch size of s = 1000 and k-mer size of k = 21.\cite{MinHash} \textbf{c} SourMash-based tree generated from whole genomes using a sketch size of s = 1000 and k-mer size of k = 21.}
     \label{fig:Primate Tree}
 \end{figure}
-
 To evaluate MinHash on datasets with a high degree of similarity, we ran Minhash on over 300 E. Coli genomes downloaded from the NCBI Reference database. We were able to cluster E Coli strains and map similarities between strains.\ref{fig:All Ecoli} The minimum similarity within all genomes compared was a distance of 0.378 between Escherichia coli strain K-12 substrand MDS42 and Escherichia coli APEC O1. This is to be expected as a Multilocus sequence typing (MLST) of these two strains of E. coli yielded a similarity of only 98.1, far below the similarity with other E. coli strains.\cite{E coli}
 
 \FloatBarrier
@@ -159,7 +158,7 @@ To evaluate MinHash on datasets with a high degree of similarity, we ran Minhash
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=1.0\textwidth]{Simhash_kmer_result.png}
-	\caption{SimHash Test Results}
+	\caption{The S. cer, S. pomb and E. coli genomes have been inputted into the SimHash algorithm and the relative SimHash distances have been calculated pairwisely at the k-mer size from 2 to 38 at intervals of 2. As described in the methods section, the SimHash distance between S. cer and S. pomb is relative shorter than the one between S. cer to E. coli when the k-mer size is less than or equal to 16. However, as the k-mer size increases above 16, the SimHash algorithm fails to distinguish the relative distance between these 3 genomes.}
 	\label{fig:SimHashDescription}
 \end{figure}
 \FloatBarrier
@@ -206,6 +205,16 @@ To evaluate MinHash on datasets with a high degree of similarity, we ran Minhash
   Brian D. Ondov, Todd J. Treangen, Páll Melsted, Adam B. Mallonee, Nicholas H. Bergman, Sergey Koren and Adam M. Phillippy.
   \textit{Mash: fast genome and metagenome distance estimation using MinHash}.
   Genome Biology, 17:132, 2016.
+  
+\bibitem{Jellyfish}
+  https://github.com/jamesturk/jellyfish
+
+\bibitem{python-simhash}
+  https://github.com/leonsim/simhash
+  
+\bibitem{go-simhash}  
+  https://github.com/mfonda/simhash
+  
 
 \end{thebibliography}
 

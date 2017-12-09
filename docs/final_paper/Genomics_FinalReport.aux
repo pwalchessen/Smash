@@ -9,6 +9,8 @@
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Exploration with MinHash}{5}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {3.1.1}Dataset}{5}}
 \citation{GitHub-SourMash}
+\citation{python-simhash}
+\citation{go-simhash}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {3.1.2}Method}{6}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Exploration with SimHash}{6}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {3.2.1}Dataset}{6}}
@@ -18,10 +20,12 @@
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {3.2.5}Evolution of our Research}{8}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.3}SMASH}{9}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {3.3.1}Design}{9}}
+\citation{Jellyfish}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {3.3.2}Algorithm}{10}}
 \citation{MinHash}
 \citation{MinHash}
 \citation{E coli}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.3.3}Further Development}{11}}
 \@writefile{toc}{\contentsline {section}{\numberline {4}Results}{11}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.1}MinHash}{11}}
 \@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces A Comparison of Primate Phylogenetic Trees. \textbf  {a} A primate phylogenetic tree model from the UCSC genome browser, with branch lengths derived from fourfold degenerate sites extracted from reference gene multiple alignments. \textbf  {b} Ondov et al.'s Mash-based tree generated from whole genomes using a sketch size of s = 1000 and k-mer size of k = 21.\cite  {MinHash} \textbf  {c} SourMash-based tree generated from whole genomes using a sketch size of s = 1000 and k-mer size of k = 21.}}{12}}
@@ -29,15 +33,18 @@
 \@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces A Similarity Comparison of 397 \textit  {E. coli} Species. This matrix shows similarity as darker in color. Note the darker colored diagonal line that stretches the matrix. This indicates the high similarity that occurs when a genome is compared to itself. The mminimum similarity within all genomes compared was a distance of 0.378 between Escherichia coli strain K-12 substrand MDS42 and Escherichia coli APEC O1.}}{13}}
 \newlabel{fig:All Ecoli}{{3}{13}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.2}SimHash}{13}}
-\bibcite{GitHub-SourMash}{{1}{}{{}}{{}}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces SimHash Test Results}}{14}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces The S. cer, S. pomb and E. coli genomes have been inputted into the SimHash algorithm and the relative SimHash distances have been calculated pairwisely at the k-mer size from 2 to 38 at intervals of 2. As described in the methods section, the SimHash distance between S. cer and S. pomb is relative shorter than the one between S. cer to E. coli when the k-mer size is less than or equal to 16. However, as the k-mer size increases above 16, the SimHash algorithm fails to distinguish the relative distance between these 3 genomes.}}{14}}
 \newlabel{fig:SimHashDescription}{{4}{14}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.3}SMASH}{14}}
 \@writefile{toc}{\contentsline {section}{\numberline {5}Conclusions}{14}}
-\@writefile{toc}{\contentsline {section}{\numberline {6}Contributions of Each Member}{14}}
+\bibcite{GitHub-SourMash}{{1}{}{{}}{{}}}
 \bibcite{E coli}{{2}{}{{}}{{}}}
 \bibcite{simhash}{{3}{}{{}}{{}}}
 \bibcite{SimvsMin}{{4}{}{{}}{{}}}
 \bibcite{MinHash}{{5}{}{{}}{{}}}
+\bibcite{Jellyfish}{{6}{}{{}}{{}}}
+\bibcite{python-simhash}{{7}{}{{}}{{}}}
+\bibcite{go-simhash}{{8}{}{{}}{{}}}
+\@writefile{toc}{\contentsline {section}{\numberline {6}Contributions of Each Member}{15}}
 \@writefile{toc}{\contentsline {section}{\numberline {A}E. Coli Genomes}{16}}
 \providecommand\NAT@force@numbers{}\NAT@force@numbers

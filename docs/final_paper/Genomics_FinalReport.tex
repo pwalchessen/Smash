@@ -25,14 +25,14 @@
 % Abstract
 % ----------------------------------------------------------------------------------------------------------------------------
 \begin{abstract}
-The project is the exploration of MinHash and SimHash in the
-computational genomics field, specifically with comparing genomic
-sequences. We survey MinHash and confirm that the results are as
+This project is the exploration of MinHash and SimHash in the
+field of computational genomics, specifically with comparing genomic
+sequences. We survey MinHash and confirm the results are as
 expected, investigate SimHash and how it applies to the field, and
-identified a shortcoming with regards to k-mer frequencies. Hence
-we developed SMASH, which addresses the identified shortcoming of
+identify a shortcoming with regards to k-mer frequencies. We therefore 
+developed SMASH, which addresses the identified shortcoming of
 SimHash and brings another LSH-like algorithm into the computational
-genomics field for comparing long genomic sequences.
+genomics field for use in comparing long genomic sequences.
 \end{abstract}
 
 % ----------------------------------------------------------------------------------------------------------------------------
@@ -200,7 +200,7 @@ Similarly to how MinHash needed to be adapted for genomic data processing with t
 \section{Contributions of Each Member}
 \begin{itemize}
 \item Nathan Roach: Nathan worked on a de novo implementation of simhash, implemented in smash.sh and compare\_jfs.py (with a deprecated implementation in npr\_smash.py). This involved counting k-mer frequencies using jellyfish and finding and comparing the cosine similarity and jaccard index of the counted k-mers between \textit{E. coli} datasets. He also worked on speeding up the smash algorithm by implementing jellyfish's bloom counter. Unfortunately, as discussed above, this did not work.
-\item Patricia Walchessen: 
+\item Patricia Walchessen: Patricia implemented MinHash, replicating results and exploring how MinHash performed calculating the similarity of genomes of varying divergence.
 \item Charlie Wang: 
 \item Yue Zhang: Yue Zhang worked on implementing the SimHash algorithm to analyze the relative genomic distance between \textit{S. cer}, \textit{S. pomb} and \textit{E. coli} at different kmer sizes.
 \end{itemize}

@@ -25,7 +25,7 @@
 % Abstract
 % ----------------------------------------------------------------------------------------------------------------------------
 \begin{abstract}
-The project is the exploration of MinHash and SimHash in the computational genomics field, specifically with comparing genomic sequences. We survey MinHash and confirm that the results are as expected, investigate SimHash and how it applies to the field, and identified a shortcoming with regards to k-mer frequencies. Hence we developed SMASH, which addresses the identified shortcoming of SimHash and brings another LSH-like algorithm into the computational genomics field for comparing long genomic sequences.
+	[1 paragraph] \color{red} TO DO \color{black} Final Project Abstract
 \end{abstract}
 
 % ----------------------------------------------------------------------------------------------------------------------------
@@ -93,12 +93,12 @@ We further reviewed the literature and discovered that SimHash was primarily des
 
 
 \subsection{SMASH}
-Hence, based on what we learned and observed from MinHash and SimHash, we come upon our purely original research. Seeing how the existing SimHash algorithm was losing resolution when the Hamming distance was too great, we went back to the drawing board and examined each part of the SimHash algorithm closely. From the examination and with additional brainstorming, we came up with SMASH, which is designed to primarily address the shortcoming of resolution loss of the distance between the hashes with SimHash.
+Based on what we learned and observed from MinHash and SimHash, we developed our own implementation, SMASH. Because the existing SimHash algorithm was losing resolution when the Hamming distance was too great, we went back to the drawing board and examined each part of the SimHash algorithm closely. From examination and additional brainstorming, we came up with SMASH, designed to primarily address the shortcoming of resolution loss of the distance between the hashes with SimHash.
 
 \subsubsection{Design}
-One of the major loss of resolution with SimHash was with the following: when a E. coli genome with some 4.5 million bases is compared to one of the yeast genomes with 12 million bases, SimHash outputs that it is about the same hamming distance apart as another comparison, which is instead between to two yeast genomes and which both of which have about 12 million bases. Thus, we sought to address the loss of frequency in the resolution.  \\ \\
-First, we observed that the basic property of the LSHs were the consensus to find a way to build a feature structure out of the dataset. In our case, we decided to build our feature structure based on frequency. The way this is handled is that for each of the genome file that is inputted, we parse it such that it becomes one complete contiguous string. Next, we chop it up into the respective k-mers. An important thing to note is that the size of the k-mer needs to be specified beforehand, and thus we test for the optimal k-mer size and describe it in the Results section. The frequency is based on how frequently the k-mers show up in the respective genome files. \\ \\
-Based on the order of the feature structure, we then construct vectors consisting of the frequency of the k-mers. This is then fed into the cosine similarity function, which is used in SimHash, to compute the cosine similarity. Notice that a fundamental difference between SimHash and SMASH is that while SimHash focuses on computing a weighting of frequency of bits, SMASH is instead focusing on computing a weighting of frequency of k-mers. For a finer look into what SMASH does, the pseudocode for the algorithm is accompanied in the next section.
+A major loss of resolution with SimHash occured in the following case: when a \textit{E. coli} genome with approximately 4.5 million bases is compared to one of the yeast genomes with approximately 12 million bases, SimHash outputs the same approximate hamming distance apart as a comparison between to two yeast genomes, both of which have about 12 million bases. Thus, we sought to address the loss of frequency in the resolution.  \\ \\
+First, we observed that the basic property of LSHs was the consensus to find a way to build a feature structure out of the dataset. In our case, we decided to build our feature structure based on frequency. For each genome file inputted, we parse it such that it becomes one complete contiguous string. Next, we divide it into its respective k-mers. An important thing to note is that the size of the k-mer needs to be specified beforehand. We test for optimal k-mer size and describe results in the Results section. The frequency is based on how frequently the k-mers show up in the respective genome files. \\ \\
+Based on the order of the feature structure, we then construct vectors consisting of the frequency of the k-mers. This is then fed into the cosine similarity function to compute the similarity. Notice that a fundamental difference between SimHash and SMASH is that, while SimHash focuses on computing a weighting of frequency of bits, SMASH instead focuses on computing a weighting of frequency of k-mers. For a finer look into what SMASH does, the pseudocode for is in the next section.
 
 \subsubsection{Algorithm}
 \begin{verbatim}
@@ -130,7 +130,7 @@ similarity_distance = 1 - cosine(vector1, vector2)
 \end{verbatim}
 
 \subsubsection{Further Development}
-To speed up the counting of k-mers, we explored the use of bloom filters through a Python library called Jellyfish \cite{Jellyfish}. With Jellyfish, we saw a decrease in the needed computation time to achieve the results highlighted by the above algorithm.
+To speed up the counting of k-mers, we explored the use of bloom filters through a Python library called Jellyfish \cite{Jellyfish}. With Jellyfish, we saw a decrease in the computation time needed to achieve the results highlighted by the above algorithm.
 
 % ---------------------------------------------------------------------------------------------------------------------------
 % Results
@@ -138,7 +138,7 @@ To speed up the counting of k-mers, we explored the use of bloom filters through
 \section{Results}
 
 \subsection{MinHash}
-In our exploration of MinHash we compared whole genomes of varying similarity to both replicate the data in the paper by Ondov et al. and evaluate the MinHash algorithm as a whole. To replicate the results of Ondov et al., we ran MinHash on a set of primate genomes to create a pylogenic tree. This tree was then compared to the trees obtained by the UCSC genome browser and Ondov et al. to determine if MinHash was performing correctly.\ref{fig:Primate Tree} The resulting phylogenetic tree was slightly different from the reference trees. In our result, the Philippine tarsier was closer to the Northern greater galago and Gray mouse lemur. Additionally, we obtained the result that Chimpanzees are closer to Humans than to Bonobos, a result echoed by Ondov et al.'s implementation of MinHash. \\ \\
+In our exploration of MinHash, we compared whole genomes of varying similarity to both replicate the data in the paper by Ondov et al. and evaluate the MinHash algorithm as a whole. To replicate the results of Ondov et al., we ran MinHash on a set of primate genomes to create a pylogenic tree. This tree was then compared to the trees obtained by the UCSC genome browser and Ondov et al. to determine if MinHash was performing correctly.\ref{fig:Primate Tree} The resulting phylogenetic tree was slightly different from the reference trees. In our result, the Philippine tarsier was closer to the Northern greater galago and Gray mouse lemur. Additionally, we obtained the result that Chimpanzees are closer to Humans than to Bonobos, a result echoed by Ondov et al.'s implementation of MinHash. \\ \\
 \begin{figure}[h]
     \centering
     \includegraphics[width=1.0\textwidth]{Figure4_Ondov}
@@ -146,13 +146,13 @@ In our exploration of MinHash we compared whole genomes of varying similarity to
     \caption{A Comparison of Primate Phylogenetic Trees. \textbf{a} A primate phylogenetic tree model from the UCSC genome browser, with branch lengths derived from fourfold degenerate sites extracted from reference gene multiple alignments. \textbf{b} Ondov et al.'s Mash-based tree generated from whole genomes using a sketch size of s = 1000 and k-mer size of k = 21.\cite{MinHash} \textbf{c} SourMash-based tree generated from whole genomes using a sketch size of s = 1000 and k-mer size of k = 21.}
     \label{fig:Primate Tree}
 \end{figure}
-To evaluate MinHash on datasets with a high degree of similarity, we ran Minhash on over 300 E. Coli genomes downloaded from the NCBI Reference database. We were able to cluster E Coli strains and map similarities between strains.\ref{fig:All Ecoli} The minimum similarity within all genomes compared was a distance of 0.378 between Escherichia coli strain K-12 substrand MDS42 and Escherichia coli APEC O1. This is to be expected as a Multilocus sequence typing (MLST) of these two strains of E. coli yielded a similarity of only 98.1, far below the similarity with other E. coli strains.\cite{E coli}
+To evaluate MinHash on datasets with a high degree of similarity, we ran Minhash on over 300 E. Coli genomes downloaded from the NCBI Reference database. We were able to cluster \textit{E. coli} strains and map similarities between strains.\ref{fig:All Ecoli} The minimum similarity within all genomes compared was a distance of 0.378 between \textit{Escherichia coli} strain K-12 substrand MDS42 and \textit{Escherichia coli} APEC O1. This is to be expected as a Multilocus sequence typing (MLST) of these two strains of \textit{E. coli} yielded a similarity of only 98.1, far below the similarity with other \textit{E. coli} strains.\cite{E coli}
 
 \FloatBarrier
 \begin{figure}[h]
     \centering
     \includegraphics[width=1.0\textwidth]{All_E_coli}
-    \caption{A Similarity Comparison of 397 \textit{E. coli} Species. This matrix shows similarity as darker in color. Note the darker colored diagonal line that stretches the matrix. This indicates the high similarity that occurs when a genome is compared to itself. The mminimum similarity within all genomes compared was a distance of 0.378 between Escherichia coli strain K-12 substrand MDS42 and Escherichia coli APEC O1.}
+    \caption{A Similarity Comparison of 397 \textit{E. coli} Species. This matrix shows similarity as darker in color. Note the darker colored diagonal line that stretches the matrix. This indicates the high similarity that occurs when a genome is compared to itself. The mminimum similarity within all genomes compared was a distance of 0.378 between \textit{Escherichia coli} strain K-12 substrand MDS42 and \textit{Escherichia coli} APEC O1.}
     \label{fig:All Ecoli}
 \end{figure}
 \FloatBarrier
@@ -162,7 +162,7 @@ To evaluate MinHash on datasets with a high degree of similarity, we ran Minhash
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=1.0\textwidth]{Simhash_kmer_result.png}
-	\caption{The S. cer, S. pomb and E. coli genomes have been inputted into the SimHash algorithm and the relative SimHash distances have been calculated pairwisely at the k-mer size from 2 to 38 at intervals of 2. As described in the methods section, the SimHash distance between S. cer and S. pomb is relative shorter than the one between S. cer to E. coli when the k-mer size is less than or equal to 16. However, as the k-mer size increases above 16, the SimHash algorithm fails to distinguish the relative distance between these 3 genomes.}
+	\caption{The \texit{S. cer}, \texit{S. pomb} and \texit{E. coli} genomes have been inputted into the SimHash algorithm and the relative SimHash distances have been calculated pairwisely at the k-mer size from 2 to 38 at intervals of 2. As described in the methods section, the SimHash distance between \texit{S. cer} and \texit{S. pomb} is relative shorter than the one between \texit{S. cer} and \texit{E. coli} when the k-mer size is less than or equal to 16. However, as the k-mer size increases above 16, the SimHash algorithm fails to distinguish the relative distance between these 3 genomes.}
 	\label{fig:SimHashDescription}
 \end{figure}
 \FloatBarrier
@@ -174,7 +174,7 @@ To evaluate MinHash on datasets with a high degree of similarity, we ran Minhash
 % Conclusions
 % ---------------------------------------------------------------------------------------------------------------------------
 \section{Conclusion}
-Similarly to how MinHash needed to be adapted for genomic data processing with the culmination of the Mash algorithm, SimHash also needed to be adapted for genomic data processing with the culmination of the SMASH algorithm. Through the exploration and verification of Mash, followed by the exploration of SimHash and identification of the loss of resolution with respect to frequency of k-mers, to our development of the SMASH algorithm, we show that MinHash is not the only LSH that is applicable to the computational genomics field. Further refinement of the application of LSH into the computational genomics field would help increase performance not only with MinHash, but also with SimHash.
+Similarly to how MinHash needed to be adapted for genomic data processing with the culmination of the Mash algorithm, SimHash also needed to be adapted for genomic data processing with the culmination of the SMASH algorithm. Through the exploration and verification of Mash, followed by exploration of SimHash and identification of loss of resolution with respect to frequency of k-mers, to our development of the SMASH algorithm, we show that MinHash is not the only LSH applicable to the computational genomics field. Further refinement of the application of LSH into the computational genomics field would help increase performance not only of MinHash, but also SimHash.
 
 
 \section{Contributions of Each Member}
@@ -212,13 +212,18 @@ Similarly to how MinHash needed to be adapted for genomic data processing with t
   Genome Biology, 17:132, 2016.
   
 \bibitem{Jellyfish}
-  https://github.com/jamesturk/jellyfish
+  James Turk and Michael Stephens.
+  \textit{Jellyfish}.
+  GitHub repository, https://github.com/jamesturk/jellyfish, 2017.
 
 \bibitem{python-simhash}
-  https://github.com/leonsim/simhash
+  Leon.
+  \textit{LeonSim}
+  GitHub repository, https://github.com/leonsim/simhash, 2017.
   
 \bibitem{go-simhash}  
-  https://github.com/mfonda/simhash
+  \textit{SimHash}
+  GitHub repository, https://github.com/mfonda/simhash, 2015.
   
 
 \end{thebibliography}

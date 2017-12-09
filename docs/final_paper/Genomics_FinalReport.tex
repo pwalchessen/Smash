@@ -13,7 +13,7 @@
 \usepackage{graphicx}
 \usepackage[numbers]{natbib}
 \usepackage{wrapfig}
-
+\usepackage{placeins}
 
 \setlength{\parindent}{4em}
 \setlength{\parskip}{1em}
@@ -37,7 +37,7 @@ One class of algorithms that could solve this problem is Locality-Sensitive Hash
 MinHash computes the differences between two genomic sequences through the estimation of a Jaccard Index, a ratio of the shared identity between the sets. SimHash, on the other hand, estimates the cosine similarity by weighting the frequency of the bits, compiling them into vectors and evaluating similarity by the distance between the vectors. The application of MinHash across multiples fields of research have been explored, including in the computational genomics field. The application of SimHash, on the other hand, has been more limited. This project is the foray of SimHash into helping compare long sequences in the computational genomics field.
 
 \section{Prior Work}
-In 2016, Ondov et al. used MinHash to analyze the resemblance between genomes and metagenomes \cite{MinHash}. They altered the MinHash algorithm to include pairwise mutation distance, or Mash distance, which estimates the rate of sequence mutation under a simple evolutionary model. Their modifications allowed Mash to efficiently cluster and search massive sequence collections. Mash, as they call their implementation, has two main components: \textit{sketch} and \textit{dist}. The \textit{sketch} function creates MinHash sketches from a sequence or a collection of sequences. \textit{Dist} compares two sketches and returns an estimate of the Jaccard index (ratio of the shared identity between sets), a P value, and the Mash distance.\ref{fig:MinHashDescription}
+The main contribution of LSH into the computational genomics field was by Ondov et al. in 2016, where they used MinHash to analyze the resemblance between genomes and metagenomes \cite{MinHash}. They altered the MinHash algorithm to include pairwise mutation distance, or Mash distance, which estimates the rate of sequence mutation under a simple evolutionary model. Their modifications allowed Mash to efficiently cluster and search massive sequence collections. Mash, as they call their implementation, has two main components: \textit{sketch} and \textit{dist}. The \textit{sketch} function creates MinHash sketches from a sequence or a collection of sequences. \textit{Dist} compares two sketches and returns an estimate of the Jaccard index (ratio of the shared identity between sets), a P value, and the Mash distance.\ref{fig:MinHashDescription}
 % Mash description Figure 
 \FloatBarrier
 \begin{figure}[h!]

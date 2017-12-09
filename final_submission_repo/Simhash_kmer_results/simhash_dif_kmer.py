@@ -35,7 +35,7 @@ def get_features(s,width):
     s = re.sub(r'[^\w]+', '', s)
     return [s[i:i + width] for i in range(max(len(s) - width + 1, 1))]
 
-for k in range(20,30,2):
+for k in range(2,40,2):
     geno_1_kmers = get_features(geno_1,k)
     geno_2_kmers = get_features(geno_2,k)
     geno_3_kmers = get_features(geno_3,k)

@@ -5,45 +5,45 @@
 \citation{MinHash}
 \citation{simhash}
 \citation{SimvsMin}
-\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Description of MinHash: First, the sequences are divided into their constituent k-mers. Each k-mer is then passed through a hash function to obtain a 32- or 64-bit hash. The Jaccard index is ratio of shared hashes between A and B over all distinct hashes in A and B. This index can be approximated by considering a smaller subset of A and B. MinHash sketches S(A) and S(B) of size 5 are shown for A and B, comprising the five smallest hash values. The Jaccard Index is determined by dividing the similarity between S(A) and S(B) by the distinct values in S(A) and S(B).}}{4}}
-\@writefile{toc}{\contentsline {section}{\numberline {3}Research Methods and Software}{6}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Exploration with MinHash}{6}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Description of MinHash: First, the sequences are divided into their constituent k-mers. Each k-mer is then passed through a hash function to obtain a 32- or 64-bit hash. The Jaccard index is ratio of shared hashes between A and B over all distinct hashes in A and B. This index can be approximated by considering a smaller subset of A and B. MinHash sketches S(A) and S(B) of size 5 are shown for A and B, comprising the five smallest hash values. The Jaccard Index is determined by dividing the similarity between S(A) and S(B) by the distinct values in S(A) and S(B).}}{3}}
+\@writefile{toc}{\contentsline {section}{\numberline {3}Research Methods and Software}{5}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Exploration with MinHash}{5}}
 \citation{GitHub-SourMash}
 \citation{python-simhash}
 \citation{go-simhash}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.1.1}Dataset}{7}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.1.2}Method}{7}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Exploration with SimHash}{7}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.2.1}Dataset}{7}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.2.2}Method}{7}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.2.3}Python-based SimHash}{8}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.2.4}Go-based SimHash}{8}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.2.5}Evolution of our Research}{9}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.3}SMASH}{10}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.3.1}Design}{10}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.1.1}Dataset}{6}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.1.2}Method}{6}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Exploration with SimHash}{6}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.2.1}Dataset}{6}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.2.2}Method}{6}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.2.3}Python-based SimHash}{7}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.2.4}Go-based SimHash}{7}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.2.5}Evolution of our Research}{8}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3}SMASH}{9}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.3.1}Design}{9}}
 \citation{Jellyfish}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.3.2}Algorithm}{11}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.3.2}Algorithm}{10}}
 \citation{MinHash}
 \citation{MinHash}
 \citation{E coli}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.3.3}Further Development}{12}}
-\@writefile{toc}{\contentsline {section}{\numberline {4}Results}{12}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}MinHash}{12}}
-\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces A Comparison of Primate Phylogenetic Trees. \textbf  {a} A primate phylogenetic tree model from the UCSC genome browser, with branch lengths derived from fourfold degenerate sites extracted from reference gene multiple alignments. \textbf  {b} Ondov et al.'s Mash-based tree generated from whole genomes using a sketch size of s = 1000 and k-mer size of k = 21.\cite  {MinHash} \textbf  {c} SourMash-based tree generated from whole genomes using a sketch size of s = 1000 and k-mer size of k = 21.}}{13}}
-\newlabel{fig:Primate Tree}{{2}{13}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces A Similarity Comparison of 397 \textit  {E. coli} Species. This matrix shows similarity as darker in color. Note the darker colored diagonal line that stretches the matrix. This indicates the high similarity that occurs when a genome is compared to itself. The mminimum similarity within all genomes compared was a distance of 0.378 between \textit  {Escherichia coli} strain K-12 substrand MDS42 and \textit  {Escherichia coli} APEC O1.}}{14}}
-\newlabel{fig:All Ecoli}{{3}{14}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}SimHash}{14}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces The \textit  {S. cer}, \textit  {S. pomb} and \textit  {E. coli} genomes have been inputted into the SimHash algorithm and the relative SimHash distances have been calculated pairwisely at the k-mer size from 2 to 38 at intervals of 2. As described in the methods section, the SimHash distance between \textit  {S. cer} and \textit  {S. pomb} is relative shorter than the one between \textit  {S. cer} and \textit  {E. coli} when the k-mer size is less than or equal to 16. However, as the k-mer size increases above 16, the SimHash algorithm fails to distinguish the relative distance between these 3 genomes.}}{15}}
-\newlabel{fig:SimHashDescription}{{4}{15}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.3}SMASH}{15}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.3.3}Further Development}{11}}
+\@writefile{toc}{\contentsline {section}{\numberline {4}Results}{11}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}MinHash}{11}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces A Comparison of Primate Phylogenetic Trees. \textbf  {a} A primate phylogenetic tree model from the UCSC genome browser, with branch lengths derived from fourfold degenerate sites extracted from reference gene multiple alignments. \textbf  {b} Ondov et al.'s Mash-based tree generated from whole genomes using a sketch size of s = 1000 and k-mer size of k = 21.\cite  {MinHash} \textbf  {c} SourMash-based tree generated from whole genomes using a sketch size of s = 1000 and k-mer size of k = 21.}}{12}}
+\newlabel{fig:Primate Tree}{{2}{12}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces A Similarity Comparison of 397 \textit  {E. coli} Species. This matrix shows similarity as darker in color. Note the darker colored diagonal line that stretches the matrix. This indicates the high similarity that occurs when a genome is compared to itself. The mminimum similarity within all genomes compared was a distance of 0.378 between \textit  {Escherichia coli} strain K-12 substrand MDS42 and \textit  {Escherichia coli} APEC O1.}}{13}}
+\newlabel{fig:All Ecoli}{{3}{13}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}SimHash}{13}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces The \textit  {S. cer}, \textit  {S. pomb} and \textit  {E. coli} genomes have been inputted into the SimHash algorithm and the relative SimHash distances have been calculated pairwisely at the k-mer size from 2 to 38 at intervals of 2. As described in the methods section, the SimHash distance between \textit  {S. cer} and \textit  {S. pomb} is relative shorter than the one between \textit  {S. cer} and \textit  {E. coli} when the k-mer size is less than or equal to 16. However, as the k-mer size increases above 16, the SimHash algorithm fails to distinguish the relative distance between these 3 genomes.}}{14}}
+\newlabel{fig:SimHashDescription}{{4}{14}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3}SMASH}{14}}
 \bibcite{GitHub-SourMash}{{1}{}{{}}{{}}}
 \bibcite{E coli}{{2}{}{{}}{{}}}
 \bibcite{simhash}{{3}{}{{}}{{}}}
 \bibcite{SimvsMin}{{4}{}{{}}{{}}}
 \bibcite{MinHash}{{5}{}{{}}{{}}}
-\@writefile{toc}{\contentsline {section}{\numberline {5}Conclusion}{16}}
-\@writefile{toc}{\contentsline {section}{\numberline {6}Contributions of Each Member}{16}}
+\@writefile{toc}{\contentsline {section}{\numberline {5}Conclusion}{15}}
+\@writefile{toc}{\contentsline {section}{\numberline {6}Contributions of Each Member}{15}}
 \bibcite{Jellyfish}{{6}{}{{}}{{}}}
 \bibcite{python-simhash}{{7}{}{{}}{{}}}
 \bibcite{go-simhash}{{8}{}{{}}{{}}}

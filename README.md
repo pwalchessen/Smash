@@ -1,1 +1,4 @@
 # smash
+
+## Description
+A common problem in computation is to evaluate the similarity between high dimensional data in an efficient manner. In bioinformatics this problem takes the form of determining the similarity between disparate sequences to evaluate evolutionary relationships, determine the organismal source of sequencing data, and compare metagenomic data. One class of algorithms that addresses this problem is Locality-Sensitive Hashing (LSH) algorithms. These algorithms reduce data dimensionality and bin inputs in a manner that groups similar data sets with high probability. Two commonly used LSH algorithms are SimHash and MinHash. This implementation of the SimHash algorithm is to determine genetic similarity between several genomes and compare its utility for this purpose to MinHash.

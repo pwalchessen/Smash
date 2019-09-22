@@ -1,10 +1,7 @@
 # smash_README.md
-## Last updated December 8th, 2017 by Nathan Roach
+## Last updated December 8th, 2017 by NR
 
-Description of code written by Nathan Roach for JHU class EN.601.647 - Computational Genomics: Sequences Final project
-Contact info:
-Email 1: nroach2@jhu.edu
-Email 2: natproach@gmail.com
+Description of code written by NR for JHU class EN.601.647 - Computational Genomics: Sequences Final project
 
 smash is a nucleotide sequence comparison algorithm. It counts the k-mers in a set of fasta files, then compares the k-mers between fasta files. It does this both by calculating a jaccard index (indicating the fraction of k-mers present in both files), and by calculating the cosine similarity between the files two k-mer count vectors.
 This is done in two steps, first by counting k-mers with the jellyfish algorithm (in smash.sh) ( https://github.com/gmarcais/Jellyfish ) then by reading the resulting k-mer count files with a jellyfish  python module ( in compare\_jfs.py ) ( https://github.com/gmarcais/Jellyfish/tree/master/swig ) and calculating the metrics listed above. As a result both jellyfish and its python module are required for smash's use
